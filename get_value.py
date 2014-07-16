@@ -11,6 +11,6 @@ def read_data(filename):
     with open(filename, 'r') as f:
         return list(csv.DictReader(f))
 
-dataset=read_data('Nids_w3.csv')
+dataset=read_data('Book1.csv')
 
 print(dataset[1]['food_wgt'])

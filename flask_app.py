@@ -1,8 +1,8 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/pocoo')
-def min_wage():
+@app.route('/')
+def home():
     
     return '<h1>Minimum Wage: The Fictional Increase</h1>'
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Osman Siddiqi | Harvard Kennedy School | Code for South Africa </title>
+
+    <!-- Bootstrap -->
+    <link href="static\bootstrap\css\bootstrap.min.css" rel="stylesheet">
+    <link href="static\bootstrap\css\bootstrap-select.min.css" rel="stylesheet">
+    <link href="static\slider\css\slider.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        <h1>Understanding the Minimum Wage</h1>
+        <span class="help-block">If you do not have a domestic worker that's okay, try the application out and see what you learn!</span>
+
+<form role="form">     
+        
+
+        <p>
+        <label for="input2_variable">How much do you pay your domestic worker?  </label></p>
+        <p>
+          <input id="ex1" data-slider-id='ex1Slider' type="text" name="input2-variable" id="input2-variable" data-slider-min="0" data-slider-max="10000" data-slider-step="1" data-slider-value="0"/>
+          <label for="input_variable"></label>
+          <select class="selectpicker" name="input-variable" id ="input-variable">
+           <optgroup label="Rate of Pay">
+            <option>Daily</option>
+            <option>Weekly</option>
+            <option>Monthly</option>
+        </select>
+        </p>
+        
+        <p> </P>
+
+        <label for="input3_variable">How many dependents belong to the domestic worker's household?  </label>
+        <p><input id="ex2" data-slider-id='ex2Slider' type="text" name="input3-variable" id="input3-variable" data-slider-min="1" data-slider-max="15" data-slider-step="1" data-slider-value="1"/></p>
+<!--
+          <label for="input_variable2">Row Number</label>
+            <input type="text" class="form-control" name="input2-variable" id ="input2-variable" placeholder="now pour some sugar on me">
+              <span class="help-block">Type in the row number</span>
+-->
+        
+          <p><button type="submit" class="btn btn-primary btn">Submit</button></p>
+    
+        </div>
+      </form>
+
+    <p>{{output2_variable}}</p>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="static\bootstrap\js\bootstrap.min.js"></script>
+    <script src="static\bootstrap\js\bootstrap-select.min.js"></script>
+    <script src="static\slider\js\bootstrap-slider.js"></script>
+
+
+    <script> 
+
+    $('#ex1').slider({
+  formater: function(value) {
+    return 'Current value: ' + value;
+  }
+});
+
+    $('#ex2').slider({
+  formater: function(value) {
+    return 'Current value: ' + value;
+  }
+});
+    </script>
+
+<script> $('.selectpicker').selectpicker();</script>
+
+
+  </body>
+</html>

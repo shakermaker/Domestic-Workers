@@ -34,21 +34,21 @@ def home():
 
     minwage_ratio=payrate/minwage
 
-#Per person costs for each expenditure type
-rent_cost=1000
-food_cost=900
-trans_cost=780
-educ_cost=100
-comm_cost=100
-health_cost=50
+    #Per person costs for each expenditure type
+    food_cost=900
+    trans_cost=780
+    
+    #All costs are adjustable.
 
-#All costs and
+    #Proportional costs to start with
+    food_wgt=0.45
 
-#Proportional costs
-food_wgt=0.45
-
-#Fixed costs
-trans_daily=30
+    #Fixed costs
+    trans_daily=30
+    educ_cost=100
+    comm_cost=100
+    health_cost=50
+    rent_cost=1000
 
     #tmp = float(dataset[input2][input])
 

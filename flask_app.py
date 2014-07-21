@@ -52,7 +52,7 @@ trans_daily=30
 
     #tmp = float(dataset[input2][input])
 
-    return render_template('bootstrap.html', input_variable=input, input2_variable=input2, input3_variable=input3, output_variable=payrate, output2_variable=food_cost)
+return render_template('bootstrap.html', input_variable=input, input2_variable=input2, input3_variable=input3, output_variable=payrate, output2_variable=food_cost)
 
 if __name__ == '__main__':
    app.debug = True

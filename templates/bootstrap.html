@@ -37,29 +37,34 @@
 
             <form role="form">
                 <div class="form-group">
-                    <label for="input2_variable" class="lead">How much do you pay your household worker?</label><br>
-                    <input                      
-                            type="text"
-                            name="input2-variable"
-                            id="input2-variable"/>                           
-                    <select class="selectpicker" name="input-variable" id ="input-variable">
-                        <optgroup label="Rate of Pay">
-                            <option value="day" selected>per day</option>
-                            <option value="week">per week</option>
-                            <option value="month">per month</option>
-                        </optgroup>
-                    </select>
-                    
+                    <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <input  class="form-control"
+                                    type="text"
+                                    name="pay-amount"
+                                    id="pay-amount"
+                                    placeholder="R ..."/>
+                        </div>
+                        <div class="col-xs-5">
+                            <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                                <optgroup label="Rate of Pay">
+                                    <option value="day" selected>per day</option>
+                                    <option value="week">per week</option>
+                                    <option value="month">per month</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-            
+
                 <div class="form-group">
                     <label for="input3_variable" class="lead">Including your household worker, how large is their household?</label><br>
                     <input
-                            id="ex2"
-                            data-slider-id='ex2Slider'
+                            id="household-size"
+                            style="width: 500px;"
                             type="text"
-                            name="input3-variable"
-                            id="input3-variable"
+                            name="household-size"
                             data-slider-min="1"
                             data-slider-max="15"
                             data-slider-step="1"
@@ -68,8 +73,8 @@
                 </div>
 
                 <br>
-                    <small class="lead">You effectively pay R1880 per month</small>
-                    <small><p>We assume full time employment at your rate of pay. This implies six days a week and a little over four weeks a month.</p></small>
+                <small class="lead">You effectively pay R1880 per month</small>
+                <small><p>We assume full time employment at your rate of pay. This implies six days a week and a little over four weeks a month.</p></small>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn">Submit</button>
@@ -92,21 +97,15 @@
 
 <script>
 
-    $('#ex1').slider({
+    $('#household-size').slider({
         formater: function(value) {
             return 'Current value: ' + value;
         }
     });
 
-    $('#ex2').slider({
-        formater: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
+    $('.selectpicker').selectpicker();
+
 </script>
-
-<script> $('.selectpicker').selectpicker();</script>
-
 
 </body>
 </html>

@@ -44,11 +44,11 @@ def home():
     educ_cost=100
     comm_cost=100
     health_cost=50
-    other_cost=400
-    
+    recreation_cost=100
+    other_cost=200
     trans_cost=trans_daily*26
     
-    totalcost=rent_cost+ input3*food_cost+trans_cost+educ_cost*(input3-2) + comm_cost*input3 + health_cost*input3 + other_cost
+    totalcost=rent_cost+ input3*food_cost+trans_cost+educ_cost*(input3-2) + comm_cost*input3 + health_cost*input3 + other_cost + recreation_cost*input3
 
     final_output=payrate/totalcost*100
 

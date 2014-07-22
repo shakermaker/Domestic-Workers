@@ -21,6 +21,7 @@ def home():
     input3 = int(request.args.get('input3-variable', '1'))
 
     minwage=1880
+    payrate=0
     
     #Assumption using DoL info - a month includes 4.33 weeks and a week is for 6 work days.
 
@@ -51,14 +52,16 @@ def home():
 
     final_output=payrate/totalcost*100
 
-    if final_output>0 & final_output<=0.75:
-        statement=="You're paying too little given the living costs and the size of your domestic worker's household. You should definitely take time to reassess how much you're paying. Try our tool to figure out a fairer wage!"
-    elif final_output>0.75 & final_output<=0.9:
-        statement=="You're nearly there! Take time to reassess the wage by using our tool!"
-    elif final_output>0.9 & final_output<=1.0:
-        statement=="You're likely paying a fair wage given the living costs and your domestic worker's household size!"
+    if final_output>0 and final_output<=75:
+        statement="You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool."
+    elif final_output>75 and final_output<=90:
+        statement="You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee."
+    elif final_output>90 and final_output<=100:
+        statement="You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!"
+    elif final_output==0:
+        statement="Try out the fair wage tool and see how your pay reflects living costs in South Africa."
     else:
-        statement=="You're an excellent employer! You have shown that you about savings and not just sufficiency! Share your results!"
+        statement="This seems like a fair wage! Remember, sufficiency does not leave room for savings. Share your results!"
 
    #tmp = float(dataset[input2][input])
 

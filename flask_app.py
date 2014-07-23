@@ -17,8 +17,14 @@ dataset=read_data('Book1.csv')
 def home():
 
     input = request.args.get('pay-rate', 'day')
-    input2 = int(request.args.get('pay-amount', '0'))
-    input3 = int(request.args.get('household-size', '1'))
+    try:
+        input2 = int(request.args.get('pay-amount', '0'))
+    except ValueError:
+        input2 = 0
+    try:
+        input3 = int(request.args.get('household-size', '1'))
+    except ValueError:
+        input3 = 1
 
     minwage=1880
     payrate=0

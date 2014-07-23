@@ -16,9 +16,9 @@ dataset=read_data('Book1.csv')
 @app.route('/')
 def home():
 
-    input = request.args.get('input-variable', 'Daily')
-    input2 = int(request.args.get('input2-variable', '0'))
-    input3 = int(request.args.get('input3-variable', '1'))
+    input = request.args.get('pay-rate', 'day')
+    input2 = int(request.args.get('pay-amount', '0'))
+    input3 = int(request.args.get('household-size', '1'))
 
     minwage=1880
     payrate=0

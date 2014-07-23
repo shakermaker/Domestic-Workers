@@ -25,57 +25,72 @@
 
     <div class="jumbotron">
         <h1>The Fair Wage</h1>
-        <p>Assess how well you pay your household workers</p>
+        <p class="lead">How well do you pay your household workers?</p>
     </div>
 
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1">
 
-            <h5>Assessing what comprises a fair compensation for your domestic employee can be tricky. Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - which is roughly a miniscule R80 per day (as of 2014). This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face (2014).</h5><br>
+            <p class="lead">
+                Assessing what comprises a fair compensation for your domestic employee can be tricky.
+                Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - which is roughly a miniscule R80 per day (as of 2014).
+                This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face (2014).
+            </p>
+            <hr>
 
-            <form role="form">
-                <div class="form-group">
-                    <label for="input2_variable" class="lead">How much do you pay your household worker?</label><br>
-                    <input                      
-                            type="text"
-                            name="input2-variable"
-                            id="input2-variable"/>                           
-                    <select class="selectpicker" name="input-variable" id ="input-variable">
-                        <optgroup label="Rate of Pay">
-                            <option value="day" selected>per day</option>
-                            <option value="week">per week</option>
-                            <option value="month">per month</option>
-                        </optgroup>
-                    </select>
-                    
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input  class="form-control"
+                                            type="text"
+                                            name="pay-amount"
+                                            id="pay-amount"
+                                            placeholder="R ..."/>
+                                </div>
+                                <div class="col-xs-5">
+                                    <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                                        <option value="day" selected>per day</option>
+                                        <option value="week">per week</option>
+                                        <option value="month">per month</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
+                            <input
+                                    id="household-size"
+                                    style="width: 500px;"
+                                    type="text"
+                                    name="household-size"
+                                    data-slider-min="1"
+                                    data-slider-max="15"
+                                    data-slider-step="1"
+                                    value="3"
+                                    data-slider-value="3"/><br>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <p class="lead">You effectively pay R1880 per month</p>
+                    <p class="text-muted">* We assume full time employment at your rate of pay. This implies six days a week and a little over four weeks a month.</p>
                 </div>
-            
-                <div class="form-group">
-                    <label for="input3_variable" class="lead">Including your household worker, how large is their household?</label><br>
-                    <input
-                            id="ex2"
-                            data-slider-id='ex2Slider'
-                            type="text"
-                            name="input3-variable"
-                            id="input3-variable"
-                            data-slider-min="1"
-                            data-slider-max="15"
-                            data-slider-step="1"
-                            data-slider-value="3"/><br>
-                    <p><strong>3 people</strong></p>
-                </div>
-
-                <br>
-                    <small class="lead">You effectively pay R1880 per month</small>
-                    <small><p>We assume full time employment at your rate of pay. This implies six days a week and a little over four weeks a month.</p></small>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn">Submit</button>
-                </div>
-
-            </form>
+            </div>
 
             <h2 class="text-success">{{output_variable|int}}% of minimal need. <small>    {{output_statement}}</small></h2>
         </div>
@@ -92,21 +107,15 @@
 
 <script>
 
-    $('#ex1').slider({
+    $('#household-size').slider({
         formater: function(value) {
-            return 'Current value: ' + value;
+            return value + ' people';
         }
     });
 
-    $('#ex2').slider({
-        formater: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
+    $('.selectpicker').selectpicker();
+
 </script>
-
-<script> $('.selectpicker').selectpicker();</script>
-
 
 </body>
 </html>

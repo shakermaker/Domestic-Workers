@@ -29,7 +29,7 @@ def home():
     minwage=1880
     payrate=0
     
-    #Assumption using DoL info - a month includes 4.33 weeks and a week is for 6 work days.
+    #Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
 
     if input=="day":
         payrate=input2*5*4.33

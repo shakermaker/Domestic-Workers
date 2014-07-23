@@ -51,7 +51,7 @@
                                             name="pay-amount"
                                             id="pay-amount"
                                             placeholder="Rand"
-                                            value="0"/>
+                                            />
                                 </div>
                                 <div class="col-xs-5">
                                     <select class="selectpicker" name="pay-rate" id ="pay-rate">
@@ -76,6 +76,7 @@
                                     value="3"
                                     data-slider-value="3"/><br>
                         </div>
+                        <p class="text-muted">*75% of domestic workers are known to be sole income providers for their households.</p><br>
 
                         <div class="row">
                             <div class="col-sm-8 col-sm-offset-2">
@@ -87,8 +88,8 @@
 
                     </form>
 
-                    <p class="lead">You effectively pay R{{output2_variable|int}} per month</p>
-                    <p class="text-muted">* We assume full time employment at your rate of pay. This implies five days a week and a little over four weeks a month.</p>
+                    <p class="lead">Your monthly equivalent for pay is R{{output2_variable|int}}</p>
+                    <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
                 </div>
             </div>
 

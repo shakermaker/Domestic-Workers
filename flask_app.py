@@ -16,20 +16,20 @@ dataset=read_data('Book1.csv')
 @app.route('/')
 def home():
 
-    input = request.args.get('input-variable', 'Daily')
-    input2 = int(request.args.get('input2-variable', '0'))
-    input3 = int(request.args.get('input3-variable', '1'))
+    input = request.args.get('pay-rate', 'day')
+    input2 = int(request.args.get('pay-amount', '0'))
+    input3 = int(request.args.get('household-size', '1'))
 
     minwage=1880
     payrate=0
     
     #Assumption using DoL info - a month includes 4.33 weeks and a week is for 6 work days.
 
-    if input=="day":
+    if input=="per day":
         payrate=input2*6*4.33
-    elif input=="week":
+    elif input=="per week":
         payrate=input2*4.33
-    elif input=="month":
+    elif input=="per month":
         payrate=input2
 
     minwage_ratio=payrate/minwage
@@ -64,7 +64,7 @@ def home():
     elif final_output==0:
         statement="Try out the fair wage tool and see how your pay reflects living costs in South Africa."
     else:
-        statement="This seems like a fair wage! Remember, sufficiency does not leave room for savings. Share your results!"
+        statement="This seems like a fair wage! Share your results!"
 
    #tmp = float(dataset[input2][input])
 

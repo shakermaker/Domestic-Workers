@@ -31,6 +31,7 @@
 </div>
 <div class="container">
     <div class="row">
+
         <div class="col-md-8 col-md-offset-1">
 
             <form role="form">
@@ -74,7 +75,6 @@
                 </div>
 
             </form>
-
             <h2 class="text-success"> {{output_variable|int}}% of minimal need. <small>    {{output_statement}}</small></h2>
         </div>
     </div>
@@ -90,21 +90,15 @@
 
 <script>
 
-    $('#ex1').slider({
+    $('#household-size').slider({
         formater: function(value) {
-            return 'Current value: ' + value;
+            return value + ' people';
         }
     });
 
-    $('#ex2').slider({
-        formater: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
+    $('.selectpicker').selectpicker();
+
 </script>
-
-<script> $('.selectpicker').selectpicker();</script>
-
 
 </body>
 </html>

@@ -25,11 +25,11 @@ def home():
     
     #Assumption using DoL info - a month includes 4.33 weeks and a week is for 6 work days.
 
-    if input=="per day":
-        payrate=input2*6*4.33
-    elif input=="per week":
+    if input=="day":
+        payrate=input2*5*4.33
+    elif input=="week":
         payrate=input2*4.33
-    elif input=="per month":
+    elif input=="month":
         payrate=input2
 
     minwage_ratio=payrate/minwage
@@ -38,12 +38,12 @@ def home():
     #All costs are adjustable.
 
     #Proportional costs to start with
-    rent_cost=1000
+    rent_cost=500
     food_cost=900
     trans_daily=30
     educ_cost=100
     comm_cost=100
-    health_cost=50
+    health_cost=40
     recreation_cost=100
     other_cost=200
     trans_cost=trans_daily*26
@@ -65,7 +65,7 @@ def home():
 
    #tmp = float(dataset[input2][input])
 
-    return render_template('bootstrap.html', input_variable=input, input2_variable=input2, input3_variable=input3, output_variable=final_output, output_statement=statement)
+    return render_template('bootstrap.html', input_variable=input, input2_variable=input2, input3_variable=input3, output_variable=final_output, output2_variable=payrate,output_statement=statement)
 
 if __name__ == '__main__':
     app.debug = True

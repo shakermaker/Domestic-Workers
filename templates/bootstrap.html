@@ -34,9 +34,8 @@
         <div class="col-md-10 col-md-offset-1">
 
             <p class="lead">
-                Assessing what comprises a fair compensation for your domestic employee can be tricky.
-                Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - which is roughly a miniscule R80 per day (as of 2014).
-                This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face (2014).
+                <strong>South Africa 2014</strong> - This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face.
+                Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - roughly R80 per day.
             </p>
             <hr>
 
@@ -51,7 +50,7 @@
                                             type="text"
                                             name="pay-amount"
                                             id="pay-amount"
-                                            placeholder="R ..."/>
+                                            placeholder="Rand"/>
                                 </div>
                                 <div class="col-xs-5">
                                     <select class="selectpicker" name="pay-rate" id ="pay-rate">
@@ -87,8 +86,8 @@
 
                     </form>
 
-                    <p class="lead">You effectively pay R1880 per month</p>
-                    <p class="text-muted">* We assume full time employment at your rate of pay. This implies six days a week and a little over four weeks a month.</p>
+                    <p class="lead">You effectively pay R{{output2_variable|int}} per month</p>
+                    <p class="text-muted">* We assume full time employment at your rate of pay. This implies five days a week and a little over four weeks a month.</p>
                 </div>
             </div>
 

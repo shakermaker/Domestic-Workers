@@ -39,25 +39,26 @@
                     <label for="input2_variable" class="lead">How much do you pay your household employee?</label><br>
                     <input                      
                             type="text"
-                            name="pay-amount"
-                            id="pay-amount"/>                           
-                    <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                            name="input2-variable"
+                            id="input2-variable"/>                           
+                    <select class="selectpicker" name="input-variable" id ="input-variable">
                         <optgroup label="Rate of Pay">
-                            <option value="day">per day</option>
+                            <option value="day" selected>per day</option>
                             <option value="week">per week</option>
                             <option value="month">per month</option>
                         </optgroup>
                     </select>
+                    
                 </div>
             
                 <div class="form-group">
                     <label for="input3_variable" class="lead">Including your household employee, how large is their household?</label><br>
                     <input
-                            id="household-size"
+                            id="ex2"
                             data-slider-id='ex2Slider'
                             type="text"
-                            name="household-size"
-                            id="household-size"
+                            name="input3-variable"
+                            id="input3-variable"
                             data-slider-min="1"
                             data-slider-max="15"
                             data-slider-step="1"
@@ -75,7 +76,6 @@
 
             </form>
             <h2 class="text-success"> {{output_variable|int}}% of minimal need. <small>    {{output_statement}}</small></h2>
-            
         </div>
     </div>
 </div>

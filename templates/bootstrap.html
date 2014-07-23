@@ -25,7 +25,7 @@
 
     <div class="jumbotron">
         <h1>The Fair Wage</h1>
-        <p>Assess how well you pay your household workers</p>
+        <p>Assess how well you pay your household employees</p>
     </div>
 
 </div>
@@ -33,11 +33,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
 
-            <h5>Assessing what comprises a fair compensation for your domestic employee can be tricky. Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - which is roughly a miniscule R80 per day (as of 2014). This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face (2014).</h5><br>
-
             <form role="form">
                 <div class="form-group">
-                    <label for="input2_variable" class="lead">How much do you pay your household worker?</label><br>
+                    <label for="input2_variable" class="lead">How much do you pay your household employee?</label><br>
                     <input                      
                             type="text"
                             name="input2-variable"
@@ -53,7 +51,7 @@
                 </div>
             
                 <div class="form-group">
-                    <label for="input3_variable" class="lead">Including your household worker, how large is their household?</label><br>
+                    <label for="input3_variable" class="lead">Including your household employee, how large is their household?</label><br>
                     <input
                             id="ex2"
                             data-slider-id='ex2Slider'
@@ -68,7 +66,7 @@
                 </div>
 
                 <br>
-                    <small class="lead">You effectively pay R1880 per month</small>
+                    <small class="lead">You effectively pay {{output2_variable|int}} per month</small>
                     <small><p>We assume full time employment at your rate of pay. This implies six days a week and a little over four weeks a month.</p></small>
 
                 <div class="form-group">
@@ -77,7 +75,7 @@
 
             </form>
 
-            <h2 class="text-success">{{output_variable|int}}% of minimal need. <small>    {{output_statement}}</small></h2>
+            <h2 class="text-success"> {{output_variable|int}}% of minimal need. <small>    {{output_statement}}</small></h2>
         </div>
     </div>
 </div>

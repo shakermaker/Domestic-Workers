@@ -25,11 +25,11 @@ def home():
     
     #Assumption using DoL info - a month includes 4.33 weeks and a week is for 6 work days.
 
-    if input=="per day":
+    if input=="day":
         payrate=input2*6*4.33
-    elif input=="per week":
+    elif input=="week":
         payrate=input2*4.33
-    elif input=="per month":
+    elif input=="month":
         payrate=input2
 
     minwage_ratio=payrate/minwage

@@ -88,26 +88,14 @@
 
                     </form>
 
-<div class="container text-right">
-    <label for="food-cost" class="lead">Food Cost</label><br>
-                            <input
-                                    id="food-cost"
-                                    style="width: 500px;"
-                                    type="text"
-                                    name="food-cost"
-                                    data-slider-min="500"
-                                    data-slider-max="1600"
-                                    data-slider-step="100"
-                                    value="900"
-                                    data-slider-value="900"/><br>
-</div>
-
-                    <p class="lead">Your monthly equivalent for pay is R{{output2_variable|int}}</p>
+                    <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
                     <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
                 </div>
             </div>
 
-            <h2 class="text-success">{{output_variable|int}}% of minimal need. <small>    {{output_statement}}</small></h2>
+            <h2 class="text-success">
+                <span id="output-percentage">0</span>% of minimal need. <small><span id="output-statement"></span></small>
+            </h2>
         </div>
     </div>
 </div>
@@ -130,73 +118,52 @@
 
     $('.selectpicker').selectpicker();
 
-    $('#food-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
+    var minwage = 1880;
+    var payrate = 0;
 
-    $('.selectpicker').selectpicker();
+    // Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
 
-    $('#rent-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
+    if (input=="day")
+        payrate = input2*5*4.33
+    else if (input=="week")
+        payrate = input2*4.33
+    else if (input=="month")
+        payrate = input2
 
-    $('.selectpicker').selectpicker();
+    var minwage_ratio = payrate/minwage
 
-    $('#transport-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
+    // Per person costs for each expenditure type
+    // All costs are adjustable.
 
-    $('.selectpicker').selectpicker();
-    
-    $('#education-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
+    // Proportional costs to start with
+    rent_cost = 500
+    food_cost = 900
+    trans_daily = 30
+    educ_cost = 100
+    comm_cost = 100
+    health_cost = 40
+    recreation_cost = 100
+    other_cost = 100
+    trans_cost = trans_daily*26
 
-    $('.selectpicker').selectpicker();
+    if (input3 > 3)
+        totalcost = rent_cost+ input3*food_cost+trans_cost+educ_cost*(input3-2) + comm_cost*input3 + health_cost*input3 + other_cost + recreation_cost*input3
+    else
+        totalcost = rent_cost+ input3*food_cost+trans_cost+educ_cost*(input3-1) + comm_cost*input3 + health_cost*input3 + other_cost + recreation_cost*input3
 
-        $('#health-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
+    final_output = payrate/totalcost*100;
 
-    $('.selectpicker').selectpicker();
+    var statement = "This seems like a fair wage! Share your results!";
 
-    $('#communication-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
-
-    $('.selectpicker').selectpicker();
-
-    $('#recreation-cost').slider({
-        formater: function(value) {
-            return value + ' rand';
-        }
-    });
-
-    $('.selectpicker').selectpicker();
-
-    $('#other-cost').slider({
-        formater: function(value) {
-            return value + ' people';
-        }
-    });
-
-    $('.selectpicker').selectpicker();
-
+    if ((final_output>0) && (final_output<= 75))
+        statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool."
+    else if ((final_output>75) && (final_output<= 90))
+        statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee."
+    else if ((final_output>90) && (final_output<= 100))
+        statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!"
+    else if (final_output == 0)
+        statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa."
 </script>
-
-
 
 </body>
 </html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Osman Siddiqi | Harvard Kennedy School | Code for South Africa </title>
+
+    <!-- Bootstrap -->
+    <link href="static\bootstrap\css\bootstrap.min.css" rel="stylesheet">
+    <link href="static\bootstrap\css\bootstrap-select.min.css" rel="stylesheet">
+    <link href="static\slider\css\slider.css" rel="stylesheet">
+    <link href="static\styles.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container text-center">
+
+    <div class="jumbotron">
+        <h1>The Fair Wage</h1>
+        <p class="lead">How well do you pay your household workers?</p>
+    </div>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <div id="input-container">
+                <p class="lead">
+                    <strong>South Africa (2014)</strong> - This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face.
+                    Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - roughly R80 per day.
+                </p>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <form id="input-form" role="form">
+                            <div class="form-group">
+                                <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input  class="form-control"
+                                                type="text"
+                                                name="pay-amount"
+                                                id="pay-amount"
+                                                placeholder="Rand"
+                                                />
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                                            <option value="day" selected>per day</option>
+                                            <option value="week">per week</option>
+                                            <option value="month">per month</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
+                                <input
+                                        id="household-size"
+                                        style="width: 500px;"
+                                        type="text"
+                                        name="household-size"
+                                        data-slider-min="1"
+                                        data-slider-max="15"
+                                        data-slider-step="1"
+                                        value="3"
+                                        data-slider-value="3"/><br>
+                            </div>
+                            <p class="text-muted">*75% of domestic workers are known to be sole income providers for their households.</p><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="output-container" style="display: none;">
+                <div class="row">
+                    <h2 class="text-success">
+                        <span id="output-percentage">0</span>% of minimal need. <small><span id="output-statement"></span></small>
+                    </h2>
+
+                    <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
+                    <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        Collapsible Group Item #1
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        Collapsible Group Item #2
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        Collapsible Group Item #3
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="static\bootstrap\js\bootstrap.min.js"></script>
+<script src="static\bootstrap\js\bootstrap-select.min.js"></script>
+<script src="static\slider\js\bootstrap-slider.js"></script>
+
+
+<script>
+
+
+    function calculate_transport(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_food(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_rent(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_expenditure(household_size) {
+        var total = 0;
+
+        total += calculate_rent(household_size);
+        total += calculate_food(household_size);
+        total += calculate_transport(household_size);
+
+        return Math.round(total)
+    }
+
+    function update_output(){
+
+        // read input
+        var household_size = $("#household-size").val();
+        var pay_rate = $("#pay-rate").val();
+        var pay_amount = $("#pay-amount").val();
+
+        if (household_size && pay_rate && pay_amount)
+        {
+            var monthly_expenditure = calculate_expenditure(household_size);
+
+            // calculate monthly pay
+            var monthly_pay = 0;
+            // Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
+            if (pay_rate=="day")
+                monthly_pay = pay_amount*5*4.33;
+            else if (pay_rate=="week")
+                monthly_pay = pay_amount*4.33;
+            else if (pay_rate=="month")
+                monthly_pay = pay_amount;
+
+            var output_percentage = (monthly_pay/monthly_expenditure)*100;
+            output_percentage = Math.round(output_percentage);
+
+            var output_statement = "This seems like a fair wage! Share your results!";
+            if ((monthly_expenditure>0) && (monthly_expenditure<= 75))
+                output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
+            else if ((monthly_expenditure>75) && (monthly_expenditure<= 90))
+                output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
+            else if ((monthly_expenditure>90) && (monthly_expenditure<= 100))
+                output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
+            else if (monthly_expenditure == 0)
+                output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
+
+
+
+            // show results to the user
+            $("#output-amount").html(monthly_pay)
+            $("#output-percentage").html(monthly_expenditure)
+            $("#output-statement").html(output_statement);
+
+            $("#input-container").hide();
+            $("#output-container").show(600);
+        }
+    }
+
+    // update output whenever the user has changed input values
+    $("#input-form input").on("change", function(){
+        update_output()
+    })
+
+    // initialize sliders
+    $('#household-size').slider({
+        formater: function(value) {
+            return value + ' people';
+        }
+    });
+
+    // initialize dropdown selects
+    $('.selectpicker').selectpicker();
+
+</script>
+
+</body>
+</html>

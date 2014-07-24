@@ -33,61 +33,109 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-            <p class="lead">
-                <strong>South Africa (2014)</strong> - This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face.
-                Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - roughly R80 per day.
-            </p>
-            <hr>
-
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <form id="input-form" role="form">
-                        <div class="form-group">
-                            <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <input  class="form-control"
-                                            type="text"
-                                            name="pay-amount"
-                                            id="pay-amount"
-                                            placeholder="Rand"
-                                            />
-                                </div>
-                                <div class="col-xs-5">
-                                    <select class="selectpicker" name="pay-rate" id ="pay-rate">
-                                        <option value="day" selected>per day</option>
-                                        <option value="week">per week</option>
-                                        <option value="month">per month</option>
-                                    </select>
+            <div id="input-container">
+                <p class="lead">
+                    <strong>South Africa (2014)</strong> - This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face.
+                    Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - roughly R80 per day.
+                </p>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <form id="input-form" role="form">
+                            <div class="form-group">
+                                <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input  class="form-control"
+                                                type="text"
+                                                name="pay-amount"
+                                                id="pay-amount"
+                                                placeholder="Rand"
+                                                />
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                                            <option value="day" selected>per day</option>
+                                            <option value="week">per week</option>
+                                            <option value="month">per month</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
-                            <input
-                                    id="household-size"
-                                    style="width: 500px;"
-                                    type="text"
-                                    name="household-size"
-                                    data-slider-min="1"
-                                    data-slider-max="15"
-                                    data-slider-step="1"
-                                    value="3"
-                                    data-slider-value="3"/><br>
-                        </div>
-                        <p class="text-muted">*75% of domestic workers are known to be sole income providers for their households.</p><br>
-                    </form>
+                            <div class="form-group">
+                                <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
+                                <input
+                                        id="household-size"
+                                        style="width: 500px;"
+                                        type="text"
+                                        name="household-size"
+                                        data-slider-min="1"
+                                        data-slider-max="15"
+                                        data-slider-step="1"
+                                        value="3"
+                                        data-slider-value="3"/><br>
+                            </div>
+                            <p class="text-muted">*75% of domestic workers are known to be sole income providers for their households.</p><br>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <div id="output-row" class="row" style="display: none;">
-                <h2 class="text-success">
-                    <span id="output-percentage">0</span>% of minimal need. <small><span id="output-statement"></span></small>
-                </h2>
+            <div id="output-container" style="display: none;">
+                <div class="row">
+                    <h2 class="text-success">
+                        <span id="output-percentage">0</span>% of minimal need. <small><span id="output-statement"></span></small>
+                    </h2>
 
-                <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
-                <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+                    <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
+                    <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        Collapsible Group Item #1
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        Collapsible Group Item #2
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        Collapsible Group Item #3
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -163,12 +211,15 @@
             else if (monthly_expenditure == 0)
                 output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
 
-            $("#output-row").show();
-            
+
+
             // show results to the user
             $("#output-amount").html(monthly_pay)
             $("#output-percentage").html(monthly_expenditure)
             $("#output-statement").html(output_statement);
+
+            $("#input-container").hide();
+            $("#output-container").show(600);
         }
     }
 

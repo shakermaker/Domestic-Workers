@@ -41,7 +41,7 @@
 
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <form role="form">
+                    <form id="input-form" role="form">
                         <div class="form-group">
                             <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
                             <div class="row">
@@ -77,15 +77,6 @@
                                     data-slider-value="3"/><br>
                         </div>
                         <p class="text-muted">*75% of domestic workers are known to be sole income providers for their households.</p><br>
-
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-
                     </form>
 
                     <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
@@ -96,6 +87,7 @@
             <h2 class="text-success">
                 <span id="output-percentage">0</span>% of minimal need. <small><span id="output-statement"></span></small>
             </h2>
+            <p></p>
         </div>
     </div>
 </div>
@@ -110,59 +102,88 @@
 
 <script>
 
+
+    function calculate_transport(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_food(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_rent(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_expenditure(household_size) {
+        var total = 0;
+
+        total += calculate_rent(household_size);
+        total += calculate_food(household_size);
+        total += calculate_transport(household_size);
+
+        return Math.round(total)
+    }
+
+    function update_output(){
+
+        // read input
+        var household_size = $("#household-size").val();
+        var pay_rate = $("#pay-rate").val();
+        var pay_amount = $("#pay-amount").val();
+
+        if (household_size && pay_rate && pay_amount)
+        {
+            var monthly_expenditure = calculate_expenditure(household_size);
+
+            // calculate monthly pay
+            var monthly_pay = 0;
+            // Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
+            if (pay_rate=="day")
+                monthly_pay = pay_amount*5*4.33;
+            else if (pay_rate=="week")
+                monthly_pay = pay_amount*4.33;
+            else if (pay_rate=="month")
+                monthly_pay = pay_amount;
+
+            var output_percentage = (monthly_pay/monthly_expenditure)*100;
+            output_percentage = Math.round(output_percentage);
+
+            var output_statement = "This seems like a fair wage! Share your results!";
+            if ((monthly_expenditure>0) && (monthly_expenditure<= 75))
+                output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
+            else if ((monthly_expenditure>75) && (monthly_expenditure<= 90))
+                output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
+            else if ((monthly_expenditure>90) && (monthly_expenditure<= 100))
+                output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
+            else if (monthly_expenditure == 0)
+                output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
+
+            // show results to the user
+            $("#output-amount").html(monthly_pay)
+            $("#output-percentage").html(monthly_expenditure)
+            $("#output-statement").html(output_statement);
+        }
+    }
+
+    // update output whenever the user has changed input values
+    $("#input-form input").on("change", function(){
+        update_output()
+    })
+
+    // initialize sliders
     $('#household-size').slider({
         formater: function(value) {
             return value + ' people';
         }
     });
 
+    // initialize dropdown selects
     $('.selectpicker').selectpicker();
 
-    var minwage = 1880;
-    var payrate = 0;
-
-    // Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
-
-    if (input=="day")
-        payrate = input2*5*4.33
-    else if (input=="week")
-        payrate = input2*4.33
-    else if (input=="month")
-        payrate = input2
-
-    var minwage_ratio = payrate/minwage
-
-    // Per person costs for each expenditure type
-    // All costs are adjustable.
-
-    // Proportional costs to start with
-    rent_cost = 500
-    food_cost = 900
-    trans_daily = 30
-    educ_cost = 100
-    comm_cost = 100
-    health_cost = 40
-    recreation_cost = 100
-    other_cost = 100
-    trans_cost = trans_daily*26
-
-    if (input3 > 3)
-        totalcost = rent_cost+ input3*food_cost+trans_cost+educ_cost*(input3-2) + comm_cost*input3 + health_cost*input3 + other_cost + recreation_cost*input3
-    else
-        totalcost = rent_cost+ input3*food_cost+trans_cost+educ_cost*(input3-1) + comm_cost*input3 + health_cost*input3 + other_cost + recreation_cost*input3
-
-    final_output = payrate/totalcost*100;
-
-    var statement = "This seems like a fair wage! Share your results!";
-
-    if ((final_output>0) && (final_output<= 75))
-        statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool."
-    else if ((final_output>75) && (final_output<= 90))
-        statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee."
-    else if ((final_output>90) && (final_output<= 100))
-        statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!"
-    else if (final_output == 0)
-        statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa."
 </script>
 
 </body>

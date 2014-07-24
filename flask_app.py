@@ -74,7 +74,7 @@ def home():
 
    #tmp = float(dataset[input2][input])
 
-    return render_template('bootstrap.html', input_variable=input, input2_variable=input2, input3_variable=input3, output_variable=final_output, output2_variable=payrate,output_statement=statement)
+    return render_template('index.html', input_variable=input, input2_variable=input2, input3_variable=input3, output_variable=final_output, output2_variable=payrate,output_statement=statement)
 
 if __name__ == '__main__':
     app.debug = True

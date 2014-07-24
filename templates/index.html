@@ -35,8 +35,7 @@
 
             <div id="input-container">
                 <p class="lead">
-                    <strong>South Africa (2014)</strong> - This tool is meant to help you make an informed decision on what a fair rate of pay is given the expenses South Africans face.
-                    Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or even just pay minimum wage - roughly R80 per day.
+                    <strong>South Africa (2014)</strong> Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or pay minimum wage. This tool will help you make an informed decision on what a fair wage for domestic workers is.
                 </p>
                 <hr>
                 <div class="row">
@@ -76,7 +75,7 @@
                                         value="3"
                                         data-slider-value="3"/><br>
                             </div>
-                            <p class="text-muted">*75% of domestic workers are known to be sole income providers for their households.</p><br>
+                            <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
                         </form>
                     </div>
                 </div>
@@ -274,7 +273,7 @@
     })
 
     // initialize sliders
-    $('#household-size').slider(){
+    $('#household-size').slider({
         formater: function(value) {
             return value + ' people';
         }

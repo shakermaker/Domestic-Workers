@@ -153,27 +153,36 @@
 
 
     function calculate_transport(household_size){
-        var out = 30 * household_size;
+        //Variable is 14. 2 implies roundtrip. 5 days a week. 4.33 weeks/month
+        var out = 14 * 2 * 5 *4.33;
         return out
     }
 
     function calculate_food(household_size){
-        var out = 850 * household_size;
+        var out = 710 * household_size;
+        
+    // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
+    // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
+
         return out
     }
 
     function calculate_rent(household_size){
-        var out = 200 * household_size;
+        var out = 500;
         return out
     }
 
     function calculate_education(household_size){
-        
-        if (household_size>3)
-          var out = 100 * (household_size-2);
-        else
-          var out = 100 * (household_size-1);
+        //The variable 'kids' is an assumption and can be changed later by the user
+        var kids=0
 
+        if (household_size>3)
+          kids=household_size-2
+          var out = 300 * (kids);
+        else 
+          kids=household_size-1
+          var out = 300 * (kids);
+            
         return out
     }
 
@@ -188,7 +197,7 @@
     }
 
     function calculate_recreation(household_size){
-        var out = 50 * household_size;
+        var out = 100 * household_size;
         return out
     }
 
@@ -209,9 +218,9 @@
         total += calculate_recreation(household_size);
         total += calculate_other(household_size);
 
-
         return Math.round(total)
     }
+
 
     function update_output(){
 
@@ -265,7 +274,7 @@
     })
 
     // initialize sliders
-    $('#household-size').slider({
+    $('#household-size').slider(){
         formater: function(value) {
             return value + ' people';
         }

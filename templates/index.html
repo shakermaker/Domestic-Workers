@@ -153,16 +153,46 @@
 
 
     function calculate_transport(household_size){
-        var out = 100 * household_size;
+        var out = 30 * household_size;
         return out
     }
 
     function calculate_food(household_size){
-        var out = 100 * household_size;
+        var out = 850 * household_size;
         return out
     }
 
     function calculate_rent(household_size){
+        var out = 200 * household_size;
+        return out
+    }
+
+    function calculate_education(household_size){
+        
+        if (household_size>3)
+          var out = 100 * (household_size-2);
+        else
+          var out = 100 * (household_size-1);
+
+        return out
+    }
+
+    function calculate_health(household_size){
+        var out = 50 * household_size;
+        return out
+    }
+
+    function calculate_communication(household_size){
+        var out = 100 * household_size;
+        return out
+    }
+
+    function calculate_recreation(household_size){
+        var out = 50 * household_size;
+        return out
+    }
+
+    function calculate_other(household_size){
         var out = 100 * household_size;
         return out
     }
@@ -173,6 +203,12 @@
         total += calculate_rent(household_size);
         total += calculate_food(household_size);
         total += calculate_transport(household_size);
+        total += calculate_education(household_size);
+        total += calculate_health(household_size);
+        total += calculate_communication(household_size);
+        total += calculate_recreation(household_size);
+        total += calculate_other(household_size);
+
 
         return Math.round(total)
     }
@@ -198,24 +234,24 @@
             else if (pay_rate=="month")
                 monthly_pay = pay_amount;
 
-            var output_percentage = (monthly_pay/monthly_expenditure)*100;
+            var output_percentage = (monthly_pay/monthly_expenditure);
+            output_percentage *= 100;
             output_percentage = Math.round(output_percentage);
 
-            var output_statement = "This seems like a fair wage! Share your results!";
-            if ((monthly_expenditure>0) && (monthly_expenditure<= 75))
+            if ((output_percentage>0) && (output_percentage<= 75))
                 output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
-            else if ((monthly_expenditure>75) && (monthly_expenditure<= 90))
+            else if ((output_percentage>75) && (output_percentage<= 90))
                 output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
-            else if ((monthly_expenditure>90) && (monthly_expenditure<= 100))
+            else if ((output_percentage>90) && (output_percentage<= 100))
                 output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
-            else if (monthly_expenditure == 0)
+            else if (output_percentage == 0)
                 output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
 
 
 
             // show results to the user
             $("#output-amount").html(monthly_pay)
-            $("#output-percentage").html(monthly_expenditure)
+            $("#output-percentage").html(output_percentage)
             $("#output-statement").html(output_statement);
 
             $("#input-container").hide();

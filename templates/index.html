@@ -24,8 +24,8 @@
 <div class="container text-center">
 
   <div class="jumbotron">
-    <h1>The Fair Wage</h1>
-    <p class="lead">How well do you pay your household workers?</p>
+    <h1>The Minimal Need</h1>
+    <p class="lead">How much does it cost to attain a sufficient standard of living in South Africa?</p>
   </div>
 
 </div>
@@ -34,8 +34,11 @@
     <div class="col-md-10 col-md-offset-1">
 
       <div id="input-container">
+        <!-- p class="lead">
+          We often pay our domestic workers what 'feels right'. This tool will help you make an informed decision on what a fair wage for domestic workers is.
+        </p-->
         <p class="lead">
-          <strong>South Africa (2014)</strong> Often times we pay our domestic employees what 'feels right', discuss rates with neighbours, or pay minimum wage. This tool will help you make an informed decision on what a fair wage for domestic workers is.
+          Using available data on consumer prices and expenditures in South Africa, we developed a welfare measure we call <strong>Minimal Need</strong>. This measure includes costs for food, education, healthcare, and housing among others. 
         </p>
         <hr>
         <div class="row">
@@ -86,12 +89,16 @@
 
       <div id="output-container" style="display: none;">
         <div class="row">
+            
+            <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
+          
+            <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+          
           <h2 class="text-success">
             <span id="output-percentage">0</span>% of minimal need. <small><span id="output-statement"></span></small>
           </h2>
 
-          <p class="lead">Your monthly equivalent for pay is R<span id="output-amount">0</span></p>
-          <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+          
 
           <div class="panel-group" id="accordion">
 
@@ -412,6 +419,8 @@
     // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
     console.log("food", out);
 
+    $("#food-total").html("R" + out);
+
     return out
   }
 
@@ -435,6 +444,8 @@
     
     console.log("rent", out);
 
+    $("#rent-total").html("R" + out);
+
     return out
   }
 
@@ -456,7 +467,7 @@
 
     var out = education_cost * kids
     console.log("educ", out);
-
+    $("#education-total").html("R" + out);
 
     return out
   }
@@ -468,6 +479,7 @@
     console.log("health", out);
 
 //Adjust slider to reflect household size
+    $("#health-total").html("R" + out);
 
     return out
   }
@@ -476,6 +488,9 @@
     var communication_cost = $("#communication-cost").val();
     var out = communication_cost * household_size
     console.log("communication", out);
+    
+    $("#communication-total").html("R" + out);
+
     return out
   }
 
@@ -483,6 +498,8 @@
     var recreation_cost = $("#recreation-cost").val();
     var out = recreation_cost * household_size;
     console.log("recreation", out);
+    
+    $("#recreation-total").html("R" + out);
 
     return out
   }
@@ -490,6 +507,8 @@
   function calculate_other(household_size){
     var out = $("#other-cost").val() * household_size;
     console.log("other", out);
+
+    $("#other-total").html("R" + out);
 
     return out
   }

@@ -54,7 +54,8 @@
                                     </div>
                                     <div class="col-xs-5">
                                         <select class="selectpicker" name="pay-rate" id ="pay-rate">
-                                            <option value="day" selected>per day</option>
+                                            <option value="">please select</option>
+                                            <option value="day">per day</option>
                                             <option value="week">per week</option>
                                             <option value="month">per month</option>
                                         </select>
@@ -72,8 +73,8 @@
                                         data-slider-min="1"
                                         data-slider-max="15"
                                         data-slider-step="1"
-                                        value="3"
-                                        data-slider-value="3"/><br>
+                                        value=""
+                                        data-slider-value="1"/><br>
                             </div>
                             <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
                         </form>
@@ -159,9 +160,9 @@
 
     function calculate_food(household_size){
         var out = 850 * household_size;
-        
-    // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
-    // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
+
+        // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
+        // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
 
         return out
     }
@@ -173,15 +174,17 @@
 
     function calculate_education(household_size){
         //The variable 'kids' is an assumption and can be changed later by the user
-        var kids=0
+        var kids = 0
+        var out = 0
 
-        if (household_size>3)
-          kids=household_size-2
-          var out = 300 * (kids);
-        else 
-          kids=household_size-1
-          var out = 300 * (kids);
-            
+        if (household_size>3){
+            kids = household_size-2;
+            out = 300 * (kids);
+        }
+        else{
+            kids=household_size-1;
+            out = 300 * (kids);
+        }
         return out
     }
 
@@ -222,7 +225,7 @@
 
 
     function update_output(){
-
+        
         // read input
         var household_size = $("#household-size").val();
         var pay_rate = $("#pay-rate").val();
@@ -246,16 +249,13 @@
             output_percentage *= 100;
             output_percentage = Math.round(output_percentage);
 
+            var output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
             if ((output_percentage>0) && (output_percentage<= 75))
                 output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
             else if ((output_percentage>75) && (output_percentage<= 90))
                 output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
             else if ((output_percentage>90) && (output_percentage<= 100))
                 output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
-            else if (output_percentage == 0)
-                output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
-
-
 
             // show results to the user
             $("#output-amount").html(monthly_pay)
@@ -275,12 +275,19 @@
     // initialize sliders
     $('#household-size').slider({
         formater: function(value) {
-            return value + ' people';
+            if (value==1)
+                return '1 person';
+            else
+                return value + ' people';
         }
+    }).on('slideStop', function(event){
+        update_output()
     });
 
     // initialize dropdown selects
-    $('.selectpicker').selectpicker();
+    $('.selectpicker').selectpicker().on('change', function(event){
+        update_output()
+    });;
 
 </script>
 

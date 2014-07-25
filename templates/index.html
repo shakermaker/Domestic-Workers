@@ -159,9 +159,9 @@
 
     function calculate_food(household_size){
         var out = 850 * household_size;
-        
-    // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
-    // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
+
+        // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
+        // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
 
         return out
     }
@@ -173,15 +173,19 @@
 
     function calculate_education(household_size){
         //The variable 'kids' is an assumption and can be changed later by the user
-        var kids=0
+        var kids = 0
+        var out = 0
 
         if (household_size>3)
-          kids=household_size-2
-          var out = 300 * (kids);
-        else 
-          kids=household_size-1
-          var out = 300 * (kids);
-            
+        {
+            kids = household_size-2;
+            out = 300 * (kids);
+        }
+        else
+        {
+            kids=household_size-1;
+            out = 300 * (kids);
+        }
         return out
     }
 

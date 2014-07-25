@@ -75,7 +75,7 @@
                     data-slider-max="15"
                     data-slider-step="1"
                     value=""
-                    data-slider-value="1"/><br>
+                    data-slider-value=""/><br>
               </div>
               <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
               <button id="go-button" class="btn btn-default">Go!</button>
@@ -95,64 +95,288 @@
 
           <div class="panel-group" id="accordion">
 
+<!-- Transportation Calculation-->
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion" href="#panel-transport-expenses">
-                    Transport <span id="transport-total" class="pull-right">R...</span>
+                    Transportation Cost <span id="transport-total" class="pull-right">R...</span>
                   </a>
                 </h4>
               </div>
               <div id="panel-transport-expenses" class="panel-collapse collapse in">
                 <div class="panel-body">
 
+
                   <div class="form-group">
-                    <label for="transport-distance" class="lead">How far does your household worker live from your house?</label><br>
+                    <label for="transport-cost" class="lead">Cost of getting to work for your domestic worker.</label><br>
                     <input
-                        id="transport-distance"
+                        id="transport-cost"
                         class="slider"
                         style="width: 500px;"
                         type="text"
-                        name="transport-distance"
+                        name="transport-cost"
                         data-slider-min="5"
                         data-slider-max="50"
-                        data-slider-step="0"
+                        data-slider-step="1"
                         value="14"
                         data-slider-value="14"/><br>
-                  </div>
+                    </div>
+                    <div class="col-xs-5">
+                       <select class="selectpicker" name="transport-direction" id ="transport-direction"><br>
+                         <option value="oneway" selected>one way</option>
+                         <option value="roundtrip">round trip</option>
+                       </select>
+                    </div>
 
                 </div>
               </div>
             </div>
+<!-- Transportation Calculation end-->
 
+<!-- Food Calculation-->
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion" href="#panel-food-expenses">
-                    Food <span id="food-total" class="pull-right">R...</span>
+                    Food Cost <span id="food-total" class="pull-right">R...</span>
                   </a>
                 </h4>
               </div>
               <div id="panel-food-expenses" class="panel-collapse collapse">
                 <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  <div class="form-group">
+                    <label for="food-cost" class="lead">To provide 2000 calories per person per day.</label><br>
+                    <input
+                        id="food-cost"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="food-cost"
+                        data-slider-min="5"
+                        data-slider-max="100"
+                        data-slider-step="1"
+                        value="29"
+                        data-slider-value="29"/><br>
+                   </div>
                 </div>
               </div>
             </div>
+<!-- Food Calculation end-->
 
+<!-- Health Calculation-->
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion" href="#panel-health-expenses">
-                    Health <span id="health-total" class="pull-right">R...</span>
+                    Healthcare Cost <span id="health-total" class="pull-right">R...</span>
                   </a>
                 </h4>
               </div>
               <div id="panel-health-expenses" class="panel-collapse collapse">
                 <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                 <div class="form-group">
+
+                  <select class="selectpicker" name="health-cost" id ="health-cost"><br>
+                         <option value="0">R0 - no budget for health</option>
+                         <option value="40" selected>R39 - public medical consultancy</option>
+                         <option value="250">R250 - medical insurance</option>
+                  </select>
+                
+                    <label for="health-householdsize" class="lead">For this many individuals in the household</label><br>
+                    <input
+
+                        id="health-householdsize"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="health-householdsize"
+                        data-slider-min="1"
+                        data-slider-max="20"
+                        data-slider-step="1"
+                        value="4"
+                        data-slider-value="4"/><br>
+                    <!-- Adjust slider to reflect household size-->
+                 </div>
                 </div>
               </div>
+            </div>
+<!-- Health Calculation end-->
+
+<!-- Rent Calculation-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-rent-expenses">
+                    Housing Cost<span id="rent-total" class="pull-right">R...</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="panel-rent-expenses" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="rent-cost" class="lead">Rent costs</label><br>
+                    <input
+                        id="rent-cost"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="rent-cost"
+                        data-slider-min="100"
+                        data-slider-max="1500"
+                        data-slider-step="100"
+                        value="500"
+                        data-slider-value="500"/><br>
+                   </div>
+                </div>
+              </div>
+            </div>
+<!-- Rent Calculation end-->
+
+<!-- Education Calculation-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-education-expenses">
+                    Education Cost<span id="education-total" class="pull-right">R...</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="panel-education-expenses" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="education-cost" class="lead"></label>
+                    <h5>Education costs are not just about school fees. They include stationery, uniform, textbooks, and even transportation costs. </h5>
+                    <input
+                        id="education-cost"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="education-cost"
+                        data-slider-min="0"
+                        data-slider-max="3000"
+                        data-slider-step="100"
+                        value="300"
+                        data-slider-value="300"/><br>
+                    <label for="education-kids" class="lead">Number of school aged children</label><br>
+                    <input
+                        id="education-kids"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="education-kids"
+                        data-slider-min="0"
+                        data-slider-max="10"
+                        data-slider-step="1"
+                        value="2"
+                        data-slider-value="2"/><br>
+                   </div>
+                </div>
+              </div>
+            </div>
+<!-- Education Calculation end-->
+
+<!-- Communication Calculation-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-communication-expenses">
+                    Communications Cost<span id="communication-total" class="pull-right">R...</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="panel-communication-expenses" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="communcation-cost" class="lead">Communication costs</label><br>
+                    <h5> Communications access is necessary for staying in touch with families, friends, accessing news, and for emergencies.</h5>
+                    <input
+                        id="communication-cost"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="communication-cost"
+                        data-slider-min="0"
+                        data-slider-max="1000"
+                        data-slider-step="50"
+                        value="100"
+                        data-slider-value="100"/><br>
+                   </div>
+                </div>
+              </div>
+            </div>
+
+
+<!-- Communication Calculation end-->
+
+<!-- Recreation Calculation end-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-recreation-expenses">
+                    Recreation Cost<span id="recreation-total" class="pull-right">R...</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="panel-recreation-expenses" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="recreation-cost" class="lead">Recreation costs</label><br>
+                    <h5> It is always good to take time out from work and managing a household. Everyone needs a break!</h5>
+                    <input
+                        id="recreation-cost"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="recreation-cost"
+                        data-slider-min="0"
+                        data-slider-max="1000"
+                        data-slider-step="50"
+                        value="100"
+                        data-slider-value="100"/><br>
+                   </div>
+                </div>
+              </div>
+            </div>
+
+
+<!-- Recreation Calculation end-->
+
+<!-- Other Calculation end-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-other-expenses">
+                    Other Costs<span id="other-total" class="pull-right">R...</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="panel-other-expenses" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="other-cost" class="lead">Other costs</label><br>
+                    <h5> These include clothing, household items, personal care, and emergency expenses.</h5>
+                    <input
+                        id="other-cost"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="other-cost"
+                        data-slider-min="0"
+                        data-slider-max="1000"
+                        data-slider-step="50"
+                        value="200"
+                        data-slider-value="200"/><br>
+                   </div>
+                </div>
+              </div>
+            </div>
+
+<!-- Other Calculation end-->
+
+
+
+
             </div>
 
           </div>
@@ -175,14 +399,20 @@
 
   function calculate_transport(household_size){
     //Variable is 14. 2 implies roundtrip. 5 days a week. 4.33 weeks/month
-    var distance = $("#transport-distance").val();
-    var out = Math.round(distance * 2 * 5 * 4.33);
+    var trans_cost = $("#transport-cost").val();
+    var trans_direction = $("#transport-direction").val();
+    if (trans_direction=="oneway")
+        var out = Math.round(trans_cost * 2 * 5 * 4.33);
+    else
+        var out = Math.round(trans_cost * 5 * 4.33);
+
     $("#transport-total").html("R" + out);
     return out
   }
 
   function calculate_food(household_size){
-    var out = 850 * household_size;
+    var food_cost=$("#food-cost").val();
+    var out = Math.round(food_cost * household_size * 30);
 
     // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
     // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
@@ -191,14 +421,32 @@
   }
 
   function calculate_rent(household_size){
-    var out = 500;
+    var rent_cost = $("#rent-cost").val();
+    var sanitation_comment=""
+    var violence_comment=""
+    var out = rent_cost
+    
+    //Need comments on sanitation and violence to update with rent options.
+
+        if (rent_cost > 0 && rent_cost < 500)
+            sanitation_comment = "Low functionality of bathrooms. High likelihood of communal bathrooms. Low likelihood of frequent trash collection."
+        else
+            sanitation_comment = "Personal bathroom facilities. Frequent trash collection"
+
+        if (rent_cost > 0 && rent_cost < 900)
+            violence_comment = "High likelihood of experiencing gang violence and burglaries."
+        else
+            violence_comment = "Much lower likelihood of experiencing violence."
+    
     return out
   }
 
   function calculate_education(household_size){
-    //The variable 'kids' is an assumption and can be changed later by the user
+    //The variable 'kids' is an assumption and can be changed later by the user. How should we do this?
+    //var kids = $("#education-kids").val()
     var kids = 0
-    var out = 0
+    var education_cost = $("#education-cost").val()
+    
 
     if (household_size>3){
       kids = household_size-2;
@@ -208,26 +456,36 @@
       kids=household_size-1;
       out = 300 * (kids);
     }
+
+    var out = education_cost * kids
+
     return out
   }
 
   function calculate_health(household_size){
-    var out = 50 * household_size;
+    var health_householdsize=$("#health-householdsize").val();
+    var health_cost=$("#health-cost").val();
+    var out = health_cost * health_householdsize;
+
+//Adjust slider to reflect household size
+
     return out
   }
 
   function calculate_communication(household_size){
-    var out = 100 * household_size;
+    var communication_cost = $("#communication-cost").val();
+    var out = communication_cost * household_size
     return out
   }
 
   function calculate_recreation(household_size){
-    var out = 100 * household_size;
+    var recreation_cost = $("#recreation-cost").val();
+    var out = recreation_cost * household_size;
     return out
   }
 
   function calculate_other(household_size){
-    var out = 100 * household_size;
+    var out = $("#other-cost").val() * household_size;
     return out
   }
 
@@ -301,7 +559,9 @@
   });
 
   // initialize dropdown selects
-  $('.selectpicker').selectpicker();
+  $('.selectpicker').selectpicker().on("change",function(){
+        update_output();
+  });
 
   // update on click
   $("#go-button").on('click', function(e){
@@ -309,17 +569,90 @@
     update_output();
   })
 
-
-  $('#transport-distance').slider({
+//Transportation Slider
+  $('#transport-cost').slider({
     formater: function(value) {
-      if (value==1)
-        return '1 km';
-      else
-        return value + ' kms';
+      return value + ' rand';
     }
   }).on('slideStop', function(event){
     update_output()
   });
+
+//Food Slider
+  $('#food-cost').slider({
+    formater: function(value) {
+      return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+//Health Slider
+  $('#health-householdsize').slider({
+    formater: function(value) {
+      return value + ' members';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+//Housing Slider
+  $('#rent-cost').slider({
+    formater: function(value) {
+      return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+//Education Slider
+  $('#education-cost').slider({
+    formater: function(value) {
+      return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+  $('#education-kids').slider({
+    formater: function(value) {
+      if (value==1)
+        return '1 child';
+      else
+        return value + ' children';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+
+//Communication Slider
+$('#communication-cost').slider({
+    formater: function(value) {
+        return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+//Recreation Slider
+$('#recreation-cost').slider({
+    formater: function(value) {
+        return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
+//Other Slider
+$('#other-cost').slider({
+    formater: function(value) {
+        return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
 
 </script>
 

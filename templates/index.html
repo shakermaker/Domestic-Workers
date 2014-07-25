@@ -67,6 +67,7 @@
                 <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
                 <input
                     id="household-size"
+                    class="slider"
                     style="width: 500px;"
                     type="text"
                     name="household-size"
@@ -92,48 +93,67 @@
           <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
 
           <div class="panel-group" id="accordion">
+
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                    Collapsible Group Item #1
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-transport-expenses">
+                    Transport <span id="transport-total" class="pull-right">R...</span>
                   </a>
                 </h4>
               </div>
-              <div id="collapseOne" class="panel-collapse collapse in">
+              <div id="panel-transport-expenses" class="panel-collapse collapse in">
+                <div class="panel-body">
+
+                  <div class="form-group">
+                    <label for="transport-distance" class="lead">How far does your household worker live from your house?</label><br>
+                    <input
+                        id="transport-distance"
+                        class="slider"
+                        style="width: 500px;"
+                        type="text"
+                        name="transport-distance"
+                        data-slider-min="5"
+                        data-slider-max="50"
+                        data-slider-step="0"
+                        value="14"
+                        data-slider-value="14"/><br>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-food-expenses">
+                    Food <span id="food-total" class="pull-right">R...</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="panel-food-expenses" class="panel-collapse collapse">
                 <div class="panel-body">
                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
               </div>
             </div>
+
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                    Collapsible Group Item #2
+                  <a data-toggle="collapse" data-parent="#accordion" href="#panel-health-expenses">
+                    Health <span id="health-total" class="pull-right">R...</span>
                   </a>
                 </h4>
               </div>
-              <div id="collapseTwo" class="panel-collapse collapse">
+              <div id="panel-health-expenses" class="panel-collapse collapse">
                 <div class="panel-body">
                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
               </div>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                    Collapsible Group Item #3
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -154,7 +174,9 @@
 
   function calculate_transport(household_size){
     //Variable is 14. 2 implies roundtrip. 5 days a week. 4.33 weeks/month
-    var out = 14 * 2 * 5 *4.33;
+    var distance = $("#transport-distance").val();
+    var out = Math.round(distance * 2 * 5 * 4.33);
+    $("#transport-total").html("R" + out);
     return out
   }
 
@@ -273,6 +295,7 @@
   })
 
   // initialize sliders
+
   $('#household-size').slider({
     formater: function(value) {
       if (value==1)
@@ -284,10 +307,21 @@
     update_output()
   });
 
+  $('#transport-distance').slider({
+    formater: function(value) {
+      if (value==1)
+        return '1 km';
+      else
+        return value + ' kms';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
+
   // initialize dropdown selects
   $('.selectpicker').selectpicker().on('change', function(event){
     update_output()
-  });;
+  });
 
 </script>
 

@@ -76,7 +76,10 @@
                                         value=""
                                         data-slider-value="1"/><br>
                             </div>
-                            <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
+                            <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p>
+                            <button id= "go-button"type="submit" class="btn btn-default" onclick="update-output()">Go!</button>
+
+
                         </form>
                     </div>
                 </div>
@@ -262,7 +265,7 @@
             $("#output-percentage").html(output_percentage)
             $("#output-statement").html(output_statement);
 
-            $("#input-container").hide();
+            //$("#input-container").hide();
             $("#output-container").show(600);
         }
     }

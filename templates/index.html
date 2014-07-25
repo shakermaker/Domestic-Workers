@@ -78,6 +78,7 @@
                     data-slider-value="1"/><br>
               </div>
               <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
+              <button id="go-button" class="btn btn-default">Go!</button>
             </form>
           </div>
         </div>
@@ -289,13 +290,7 @@
     }
   }
 
-  // update output whenever the user has changed input values
-  $("#input-form input").on("change", function(){
-    update_output()
-  })
-
   // initialize sliders
-
   $('#household-size').slider({
     formater: function(value) {
       if (value==1)
@@ -303,9 +298,17 @@
       else
         return value + ' people';
     }
-  }).on('slideStop', function(event){
-    update_output()
   });
+
+  // initialize dropdown selects
+  $('.selectpicker').selectpicker();
+
+  // update on click
+  $("#go-button").on('click', function(e){
+    e.preventDefault();
+    update_output();
+  })
+
 
   $('#transport-distance').slider({
     formater: function(value) {
@@ -315,11 +318,6 @@
         return value + ' kms';
     }
   }).on('slideStop', function(event){
-    update_output()
-  });
-
-  // initialize dropdown selects
-  $('.selectpicker').selectpicker().on('change', function(event){
     update_output()
   });
 

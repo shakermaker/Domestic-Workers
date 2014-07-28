@@ -596,6 +596,11 @@ $(document).ready(function(){
 
   $("#pay-amount").focus();
 
+  // show/hide panels on click
+  $(".panel-heading").on('click', function(){
+    $(this).next(".collapse").toggle();
+  })
+
   // initialize sliders
   $('#household-size').slider({
     formater: function(value) {

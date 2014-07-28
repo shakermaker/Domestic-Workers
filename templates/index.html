@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Osman Siddiqi | Harvard Kennedy School | Code for South Africa </title>
+  <title>Osman Siddiqi | Code for South Africa </title>
 
   <!-- Bootstrap -->
   <link href="static\bootstrap\css\bootstrap.min.css" rel="stylesheet">
@@ -25,9 +25,9 @@
 
   <div class="jumbotron">
     <h1>The Minimal Need</h1>
-    <p class="lead">The cost of attaining a minimal standard of living in South Africa?</p>
+    <p class="lead">Understanding the cost of a minimal standard of living in South Africa</p>
     <!-- Button trigger modal -->
-    <button class="btn btn-primary btn block" data-toggle="modal" data-target="#myModal"><small>Open Description</small></button>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><small>Open Description</small></button>
   </div>
 
 </div>
@@ -104,6 +104,8 @@
 <p class="lead"><span id="output-statement"></span></p>
 
 
+
+
 <div class="panel-group" id="accordion">
 
 <!-- Food Panel-->
@@ -115,10 +117,11 @@
       </a>
     </h4>
   </div>
-  <div id="panel-food-expenses" class="panel-collapse collapse">
+  <div id="panel-food-expenses" class="panel-collapse collapse in">
     <div class="panel-body">
       <div class="form-group">
-        <label for="food-cost" class="lead">To provide 2000 calories per person per day.</label><br>
+        <label for="food-cost" class="lead">Providing 2000 calories per person per day.</label><br>
+        <p>Using consumer price index data and a selected basket of goods we estimate that the daily average cost per person for attaining 2000 calories is R28 (R850 per month per person). </p>
         <input
             id="food-cost"
             class="slider"
@@ -128,8 +131,8 @@
             data-slider-min="5"
             data-slider-max="100"
             data-slider-step="1"
-            value="29"
-            data-slider-value="29"/><br>
+            value="28"
+            data-slider-value="28"/><br>
       </div>
     </div>
   </div>
@@ -145,12 +148,11 @@
       </a>
     </h4>
   </div>
-  <div id="panel-transport-expenses" class="panel-collapse collapse in">
+  <div id="panel-transport-expenses" class="panel-collapse collapse">
     <div class="panel-body">
-
-
       <div class="form-group">
-        <label for="transport-cost" class="lead">Cost of getting to work for your domestic worker.</label><br>
+        <label for="transport-cost" class="lead">Travel cost for your domestic worker.</label><br>
+        <p>While travel costs are known to be high for domestic workers, we should stay mindful that travel times are often over an hour one way as well.</p>
         <input
             id="transport-cost"
             class="slider"
@@ -163,7 +165,8 @@
             value="14"
             data-slider-value="14"/><br>
       </div>
-      <div class="col-xs-5">
+      <div class="col-xs-7">
+        <label for="transport-direction" class="lead">Is this cost one way or for a roundtrip?</label><br>
         <select class="selectpicker" name="transport-direction" id ="transport-direction"><br>
           <option value="oneway" selected>one way</option>
           <option value="roundtrip">round trip</option>
@@ -186,8 +189,10 @@
   </div>
   <div id="panel-rent-expenses" class="panel-collapse collapse">
     <div class="panel-body">
-      <div class="form-group">
-        <label for="rent-cost" class="lead">Housing Cost</label><br>
+      <label for="rent-cost" class="lead">Housing Cost</label><br>
+      <div class="form-group"> 
+      <label for="rent-cost" class="lead">The cost of rent, utilities, and household maintenance.</label><br>
+        <p>Generally speaking, higher rents are associated with better provision of sanitation services and lower crime rates in informal settlements</p>       
         <input
             id="rent-cost"
             class="slider"
@@ -217,14 +222,20 @@
   <div id="panel-health-expenses" class="panel-collapse collapse">
     <div class="panel-body">
       <div class="form-group">
-
-        <select class="selectpicker" name="health-cost" id ="health-cost"><br>
-          <option value="0">R0 - no budget for health</option>
-          <option value="40" selected>R39 - public medical consultancy</option>
-          <option value="250">R250 - medical insurance</option>
-        </select>
-
-        <label for="health-householdsize" class="lead">For how many individuals in the household?</label><br>
+        <label for="rent-cost" class="lead">Allocation of funding for monthly healthcare needs</label><br>
+        <p>In poorer densely packed areas, there is a tendency to face greater health risks. </p>       
+        <input
+            id="health-cost"
+            class="slider"
+            style="width: 500px;"
+            type="text"
+            name="health-cost"
+            data-slider-min="40"
+            data-slider-max="250"
+            data-slider-step="10"
+            value="160"
+            data-slider-value="160"/><br>
+        <!-- label for="health-householdsize" class="lead">For how many individuals in the household?</label><br>
         <input
 
             id="health-householdsize"
@@ -300,7 +311,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="communication-cost" class="lead">Communication costs</label><br>
-        <h5> Communications access is necessary for staying in touch with families, friends, accessing news, and for emergencies.</h5>
+        <h5> Communications are necessary for staying in touch with families, friends, accessing news, and for emergencies.</h5>
         <input
             id="communication-cost"
             class="slider"
@@ -309,7 +320,7 @@
             name="communication-cost"
             data-slider-min="0"
             data-slider-max="1000"
-            data-slider-step="50"
+            data-slider-step="100"
             value="100"
             data-slider-value="100"/><br>
       </div>
@@ -396,18 +407,18 @@
         <h3 class="modal-title" id="myModalLabel">The Minimal Need - Description</h3>
       </div>
       <div class="modal-body">
-        <p>Using available data on consumer prices including for food, housing, transport, health, and education in South Africa, we developed a welfare measure we call <strong>Minimal Need</strong>. This tool then uses these costs to determine what would be needed by a household of a particular size to minimally get by in any given month.</p>
-        <h4><strong>Here's how this tool works:</strong></h4>
+        <p>Using available data on consumer prices in South Africa, we developed a welfare measure we call <strong>Minimal Need</strong>. This tool then uses these costs to determine what would be needed by a household of a particular size to minimally get by in any given month.</p>
+        <h4>Here's how this tool works:</h4>
         <ol>
           <li>We ask what you pay (or would pay) and the rate at which you pay your domestic worker. This computes a monthly rate of pay.</li>
           <li>We ask the size of your domestic worker's household. This determines how many people need to be provided for.</li>
           <li>We output results showing you where your pay rate stands relative to the domestic worker's Minimal Need.</li>
-          <li>Lastly, we show you our calculations - and not just that - we allow you to alter our calculations to make the tool more contextual to the domestic worker's household.</li>
+          <li>Lastly, we show you our calculations - and not just that - we allow you to alter some of our to make the tool more contextual to you and your domestic worker.</li>
         </ol>
-        <p>Often times we pay our domestic workers minimum wage, what households around us pay, or what 'feels right' as a fair wage. Minimum wage in 2014 for domestic workers</p>
+        <br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Get Started!</button>
+        <button type="button" class="btn btn-success btn-block" data-dismiss="modal">Get Started!</button>
       </div>
     </div>
   </div>
@@ -426,8 +437,8 @@
 $(function() {
   $("#myModal").modal("show");
 });
+
 function calculate_transport(household_size){
-  //2 implies roundtrip. 5 days a week. 4.33 weeks/month
   var trans_cost = $("#transport-cost").val();
   var trans_direction = $("#transport-direction").val();
   if (trans_direction=="oneway")
@@ -446,8 +457,9 @@ function calculate_food(household_size){
   var food_cost=$("#food-cost").val();
   var out = Math.round(food_cost * household_size * 30);
 
-  // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week. 16/21*850 for kids
+  // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week IF education is provided. 16/21*850 for kids
   // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
+
   console.log("food", out);
 
   $("#food-total").html("R" + out);
@@ -486,8 +498,7 @@ function calculate_education(household_size){
   var kids = 0
   var education_cost = $("#education-cost").val()
 
-
-  if (household_size>3){
+  if (household_size>2){
     kids = household_size-2;
     out = 300 * (kids);
   }
@@ -498,15 +509,17 @@ function calculate_education(household_size){
 
   var out = education_cost * kids
   console.log("educ", out);
+  console.log("kids", kids);
+  console.log("household size", household_size);
+  
   $("#education-total").html("R" + out);
 
   return out
 }
 
 function calculate_health(household_size){
-  var health_householdsize=$("#health-householdsize").val();
   var health_cost=$("#health-cost").val();
-  var out = health_cost * health_householdsize;
+  var out = health_cost * household_size;
   console.log("health", out);
 
 //Adjust slider to reflect household size
@@ -720,6 +733,14 @@ $(document).ready(function(){
     update_output()
   });
 
+//Healthcare Slider
+$('#health-cost').slider({
+    formater: function(value) {
+      return value + ' rand';
+    }
+  }).on('slideStop', function(event){
+    update_output()
+  });
 
   //Communication Slider
   $('#communication-cost').slider({

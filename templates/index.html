@@ -25,7 +25,9 @@
 
   <div class="jumbotron">
     <h1>The Minimal Need</h1>
-    <p class="lead">How much does it cost to attain a sufficient standard of living in South Africa?</p>
+    <p class="lead">The cost of attaining a minimal standard of living in South Africa?</p>
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn block" data-toggle="modal" data-target="#myModal"><small>Open Description</small></button>
   </div>
 
 </div>
@@ -37,10 +39,7 @@
   <!-- p class="lead">
     We often pay our domestic workers what 'feels right'. This tool will help you make an informed decision on what a fair wage for domestic workers is.
   </p-->
-  <p class="lead">
-    Using available data on consumer prices and expenditures in South Africa, we developed a welfare measure we call <strong>Minimal Need</strong>. This measure includes costs for food, education, healthcare, and housing among others.
-  </p>
-
+  
   <hr>
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -83,7 +82,7 @@
         </div>
         <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
         <div class="col-sm-8 col-sm-offset-2">
-          <button id="go-button" class="btn btn-primary btn-block">Calculate expenses</button>
+          <button id="go-button" class="btn btn-primary btn-block">Calculate expenses</button><br>
         </div>
       </form>
     </div>
@@ -381,12 +380,37 @@
 </div>
 <!-- Other Panel end-->
 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="myModalLabel">The Minimal Need - Description</h3>
+      </div>
+      <div class="modal-body">
+        <p>Using available data on consumer prices including for food, housing, transport, health, and education in South Africa, we developed a welfare measure we call <strong>Minimal Need</strong>. This tool then uses these costs to determine what would be needed by a household of a particular size to minimally get by in any given month.</p>
+        <h4><strong>Here's how this tool works:</strong></h4>
+        <ol>
+          <li>We ask what you pay (or would pay) and the rate at which you pay your domestic worker. This computes a monthly rate of pay.</li>
+          <li>We ask the size of your domestic worker's household. This determines how many people need to be provided for.</li>
+          <li>We output results showing you where your pay rate stands relative to the domestic worker's Minimal Need.</li>
+          <li>Lastly, we show you our calculations - and not just that - we allow you to alter our calculations to make the tool more contextual to the domestic worker's household.</li>
+        </ol>
+        <p>Often times we pay our domestic workers minimum wage, what households around us pay, or what 'feels right' as a fair wage. Minimum wage in 2014 for domestic workers</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Get Started!</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -398,6 +422,10 @@
 
 
 <script>
+
+$(function() {
+  $("#myModal").modal("show");
+});
 function calculate_transport(household_size){
   //2 implies roundtrip. 5 days a week. 4.33 weeks/month
   var trans_cost = $("#transport-cost").val();

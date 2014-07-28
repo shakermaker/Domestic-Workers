@@ -1,4 +1,12 @@
 body{
     background-image: url('/static/patterns/dimension/dimension.png');
+}
 
+.panel-heading:hover{
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.panel-heading a:hover{
+    text-decoration: none;
 }

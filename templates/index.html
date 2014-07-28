@@ -107,6 +107,36 @@
 
 <div class="panel-group" id="accordion">
 
+<!-- Food Panel-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#panel-food-expenses">
+        Food Cost <span id="food-total" class="pull-right">R...</span>
+      </a>
+    </h4>
+  </div>
+  <div id="panel-food-expenses" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="food-cost" class="lead">To provide 2000 calories per person per day.</label><br>
+        <input
+            id="food-cost"
+            class="slider"
+            style="width: 500px;"
+            type="text"
+            name="food-cost"
+            data-slider-min="5"
+            data-slider-max="100"
+            data-slider-step="1"
+            value="29"
+            data-slider-value="29"/><br>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Food Panel end-->
+
 <!-- Transportation Panel-->
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -146,75 +176,6 @@
 </div>
 <!-- Transportation Panel end-->
 
-<!-- Food Panel-->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-food-expenses">
-        Food Cost <span id="food-total" class="pull-right">R...</span>
-      </a>
-    </h4>
-  </div>
-  <div id="panel-food-expenses" class="panel-collapse collapse">
-    <div class="panel-body">
-      <div class="form-group">
-        <label for="food-cost" class="lead">To provide 2000 calories per person per day.</label><br>
-        <input
-            id="food-cost"
-            class="slider"
-            style="width: 500px;"
-            type="text"
-            name="food-cost"
-            data-slider-min="5"
-            data-slider-max="100"
-            data-slider-step="1"
-            value="29"
-            data-slider-value="29"/><br>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Food Panel end-->
-
-<!-- Health Panel-->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-health-expenses">
-        Healthcare Cost <span id="health-total" class="pull-right">R...</span>
-      </a>
-    </h4>
-  </div>
-  <div id="panel-health-expenses" class="panel-collapse collapse">
-    <div class="panel-body">
-      <div class="form-group">
-
-        <select class="selectpicker" name="health-cost" id ="health-cost"><br>
-          <option value="0">R0 - no budget for health</option>
-          <option value="40" selected>R39 - public medical consultancy</option>
-          <option value="250">R250 - medical insurance</option>
-        </select>
-
-        <label for="health-householdsize" class="lead">For this many individuals in the household</label><br>
-        <input
-
-            id="health-householdsize"
-            class="slider"
-            style="width: 500px;"
-            type="text"
-            name="health-householdsize"
-            data-slider-min="1"
-            data-slider-max="20"
-            data-slider-step="1"
-            value="4"
-            data-slider-value="4"/><br>
-        <!-- Adjust slider to reflect household size-->
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Health Panel end-->
-
 <!-- Rent Panel-->
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -244,6 +205,45 @@
   </div>
 </div>
 <!-- Rent Panel end-->
+
+<!-- Health Panel-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#panel-health-expenses">
+        Healthcare Cost <span id="health-total" class="pull-right">R...</span>
+      </a>
+    </h4>
+  </div>
+  <div id="panel-health-expenses" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="form-group">
+
+        <select class="selectpicker" name="health-cost" id ="health-cost"><br>
+          <option value="0">R0 - no budget for health</option>
+          <option value="40" selected>R39 - public medical consultancy</option>
+          <option value="250">R250 - medical insurance</option>
+        </select>
+
+        <label for="health-householdsize" class="lead">For how many individuals in the household?</label><br>
+        <input
+
+            id="health-householdsize"
+            class="slider"
+            style="width: 500px;"
+            type="text"
+            name="health-householdsize"
+            data-slider-min="1"
+            data-slider-max="20"
+            data-slider-step="1"
+            value="4"
+            data-slider-value="4"/><br>
+        <!-- Adjust slider to reflect household size-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Health Panel end-->
 
 <!-- Education Panel-->
 <div class="panel panel-default">
@@ -570,20 +570,34 @@ function update_output(){
 
     // show results to the user
     $("#output-amount").html("R" + monthly_pay)
-    if(output_percentage>100)
+    if(output_percentage>=100)
     {
       $("#output-amount").removeClass('label-danger');
+      $("#output-amount").removeClass('label-warning');
       $("#output-amount").addClass('label-success');
       $("#output-percentage").removeClass('label-danger');
+      $("#output-percentage").removeClass('label-warning');
       $("#output-percentage").addClass('label-success');
     }
-    else
+    else if(output_percentage>75 && output_percentage<100)
     {
-      $("#output-amount").removeClass('label-success')
-      $("#output-amount").addClass('label-danger');
-      $("#output-percentage").removeClass('label-success')
-      $("#output-percentage").addClass('label-danger');
+      $("#output-amount").removeClass('label-danger');
+      $("#output-amount").addClass('label-warning');
+      $("#output-amount").removeClass('label-success');
+      $("#output-percentage").removeClass('label-danger');
+      $("#output-percentage").addClass('label-warning');
+      $("#output-percentage").removeClass('label-success');
     }
+    else(output_percentage<=75)
+    {
+      $("#output-amount").addClass('label-danger');
+      $("#output-amount").removeClass('label-warning');
+      $("#output-amount").removeClass('label-success');
+      $("#output-percentage").addClass('label-danger');
+      $("#output-percentage").removeClass('label-warning');
+      $("#output-percentage").removeClass('label-success');
+    }
+
     $("#output-percentage").html(output_percentage + "%")
     $("#output-statement").html(output_statement);
 

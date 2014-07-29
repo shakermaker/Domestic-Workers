@@ -110,11 +110,11 @@
 
 <!-- Food Panel-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-food-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-food-expenses">
+      <span>
         Food Cost <span id="food-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-food-expenses" class="panel-collapse collapse in">
@@ -141,11 +141,11 @@
 
 <!-- Transportation Panel-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-transport-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-transport-expenses">
+      <span>
         Transportation Cost <span id="transport-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-transport-expenses" class="panel-collapse collapse">
@@ -180,11 +180,11 @@
 
 <!-- Rent Panel-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-rent-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-rent-expenses">
+      <span>
         Housing Cost <span id="rent-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-rent-expenses" class="panel-collapse collapse">
@@ -212,11 +212,11 @@
 
 <!-- Health Panel-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-health-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-health-expenses">
+      <span>
         Healthcare Cost <span id="health-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-health-expenses" class="panel-collapse collapse">
@@ -257,11 +257,11 @@
 
 <!-- Education Panel-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-education-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-education-expenses">
+      <span>
         Education Cost<span id="education-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-education-expenses" class="panel-collapse collapse">
@@ -300,11 +300,11 @@
 
 <!-- Communication Panel-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-communication-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-communication-expenses">
+      <span>
         Communications Cost<span id="communication-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-communication-expenses" class="panel-collapse collapse">
@@ -331,11 +331,11 @@
 
 <!-- Recreation Panel end-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-recreation-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-recreation-expenses">
+      <span>
         Recreation Cost<span id="recreation-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-recreation-expenses" class="panel-collapse collapse">
@@ -362,11 +362,11 @@
 
 <!-- Other Panel end-->
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#panel-other-expenses">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#panel-other-expenses">
+      <span>
         Other Costs<span id="other-total" class="pull-right">R...</span>
-      </a>
+      </span>
     </h4>
   </div>
   <div id="panel-other-expenses" class="panel-collapse collapse">
@@ -651,10 +651,10 @@ $(document).ready(function(){
 
   $("#pay-amount").focus();
 
-  // show/hide panels on click
-  $(".panel-heading").on('click', function(){
-    $(this).next(".collapse").toggle();
-  })
+//  // show/hide panels on click
+//  $(".panel-heading").on('click', function(){
+//    $(this).next(".collapse").toggle();
+//  })
 
   // initialize sliders
   $('#household-size').slider({

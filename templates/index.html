@@ -99,7 +99,7 @@
 <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
 
 <h2>
-  You are paying <span id="output-percentage" class="label">0%</span> of minimal need.
+  You are paying <span id="output-percentage" class="label">0%</span> of the household's minimal need of <span id="output-monthly-need">R0</span>.
 </h2>
 <p class="lead"><span id="output-statement"></span></p>
 
@@ -611,6 +611,7 @@ function update_output(){
 
     // show results to the user
     $("#output-amount").html("R" + monthly_pay)
+    $("#output-monthly-need").html("R" + monthly_expenditure)
     if(output_percentage>=100)
     {
       $("#output-amount").removeClass('label-danger');

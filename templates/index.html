@@ -36,10 +36,7 @@
 <div class="col-md-10 col-md-offset-1">
 
 <div id="input-container">
-  <!-- p class="lead">
-    We often pay our domestic workers what 'feels right'. This tool will help you make an informed decision on what a fair wage for domestic workers is.
-  </p-->
-  
+
   <hr>
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -102,8 +99,6 @@
   You are paying <span id="output-percentage" class="label">0%</span> of the household's minimal need of <span id="output-monthly-need">R0</span>.
 </h2>
 <p class="lead"><span id="output-statement"></span></p>
-
-
 
 
 <div class="panel-group" id="accordion">
@@ -190,9 +185,9 @@
   <div id="panel-rent-expenses" class="panel-collapse collapse">
     <div class="panel-body">
       <label for="rent-cost" class="lead">Housing Cost</label><br>
-      <div class="form-group"> 
-      <label for="rent-cost" class="lead">The cost of rent, utilities, and household maintenance.</label><br>
-        <p>Generally speaking, higher rents are associated with better provision of sanitation services and lower crime rates in informal settlements</p>       
+      <div class="form-group">
+        <label for="rent-cost" class="lead">The cost of rent, utilities, and household maintenance.</label><br>
+        <p>Generally speaking, higher rents are associated with better provision of sanitation services and lower crime rates in informal settlements</p>
         <input
             id="rent-cost"
             class="slider"
@@ -235,20 +230,6 @@
             data-slider-step="10"
             value="160"
             data-slider-value="160"/><br>
-        <!-- label for="health-householdsize" class="lead">For how many individuals in the household?</label><br>
-        <input
-
-            id="health-householdsize"
-            class="slider"
-            style="width: 500px;"
-            type="text"
-            name="health-householdsize"
-            data-slider-min="1"
-            data-slider-max="20"
-            data-slider-step="1"
-            value="4"
-            data-slider-value="4"/><br>
-        <!-- Adjust slider to reflect household size-->
       </div>
     </div>
   </div>
@@ -391,13 +372,6 @@
 </div>
 <!-- Other Panel end-->
 
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -492,9 +466,8 @@ function calculate_rent(household_size){
 }
 
 function calculate_education(household_size){
-  //The variable 'kids' is an assumption and can be changed later by the user. How should we do this?
-  //var kids = $("#education-kids").val()
-  var kids = 0
+
+  var kids = $("#education-kids").val()
   var education_cost = $("#education-cost").val()
 
   if (household_size>2){
@@ -510,7 +483,7 @@ function calculate_education(household_size){
   console.log("educ", out);
   console.log("kids", kids);
   console.log("household size", household_size);
-  
+
   $("#education-total").html("R" + out);
 
   return out
@@ -521,7 +494,6 @@ function calculate_health(household_size){
   var out = health_cost * household_size;
   console.log("health", out);
 
-//Adjust slider to reflect household size
   $("#health-total").html("R" + out);
 
   return out
@@ -583,7 +555,7 @@ function update_output(){
   if (household_size && pay_rate && pay_amount)
   {
     var monthly_expenditure = calculate_expenditure(household_size);
-//    console.log("Monthly expenditure", monthly_expenditure);
+
     // calculate monthly pay
     var monthly_pay = 0;
     // Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
@@ -650,11 +622,6 @@ function update_output(){
 $(document).ready(function(){
 
   $("#pay-amount").focus();
-
-//  // show/hide panels on click
-//  $(".panel-heading").on('click', function(){
-//    $(this).next(".collapse").toggle();
-//  })
 
   // initialize sliders
   $('#household-size').slider({
@@ -734,7 +701,7 @@ $(document).ready(function(){
   });
 
 //Healthcare Slider
-$('#health-cost').slider({
+  $('#health-cost').slider({
     formater: function(value) {
       return value + ' rand';
     }

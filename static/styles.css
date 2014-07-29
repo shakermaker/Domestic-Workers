@@ -1,5 +1,5 @@
 body{
-    background-image: url('/static/patterns/dimension/dimension.png');
+    background-image: url('/static/patterns/furley_bg/furley_bg.png');
 }
 
 .panel-heading:hover{
@@ -9,4 +9,13 @@ body{
 
 .panel-heading a:hover{
     text-decoration: none;
+}
+
+#footer{
+    height: 80px;
+    width: 100%;
+    padding-top: 20px;
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    border-top: solid #e7e7e7 1px;
 }

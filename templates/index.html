@@ -407,13 +407,12 @@
         <h3 class="modal-title" id="myModalLabel">The Minimal Need - Description</h3>
       </div>
       <div class="modal-body">
-        <p>Using available data on consumer prices in South Africa, we developed a welfare measure we call <strong>Minimal Need</strong>. This tool then uses these costs to determine what would be needed by a household of a particular size to minimally get by in any given month.</p>
+        <p>Using available data on consumer prices in South Africa, we developed a welfare standard we call <strong>The Minimal Need</strong>. </p><br>
         <h4>Here's how this tool works:</h4>
         <ol>
-          <li>We ask what you pay (or would pay) and the rate at which you pay your domestic worker. This computes a monthly rate of pay.</li>
-          <li>We ask the size of your domestic worker's household. This determines how many people need to be provided for.</li>
-          <li>We output results showing you where your pay rate stands relative to the domestic worker's Minimal Need.</li>
-          <li>Lastly, we show you our calculations - and not just that - we allow you to alter some of our to make the tool more contextual to you and your domestic worker.</li>
+          <li>We ask what you pay (or would pay) your domestic worker.</li>
+          <li>We show you where your pay rate stands compared to The Minimal Need.</li>
+          <li>Lastly, we show you our calculations and allow you to alter our assumptions contextualize the tool to you.</li>
         </ol>
         <br>
       </div>
@@ -521,7 +520,7 @@ function calculate_health(household_size){
   var health_cost=$("#health-cost").val();
   var out = health_cost * household_size;
   console.log("health", out);
-  
+
 //Adjust slider to reflect household size
   $("#health-total").html("R" + out);
 

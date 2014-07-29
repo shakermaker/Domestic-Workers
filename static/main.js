@@ -175,6 +175,6 @@ function update_output(){
     $("#output-statement").html(output_statement);
 
     $("#input-container").hide();
-    $("#output-container").show(600);
+    $("#result-container").show(600);
   }
 }

@@ -31,75 +31,83 @@
   </div>
 
 </div>
-<div class="container">
-<div class="row">
-<div class="col-md-10 col-md-offset-1">
 
-<div id="input-container">
-
-  <hr>
+<div id="input-container" class="container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <form id="input-form" role="form">
-        <div class="form-group">
-          <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
-          <div class="row">
-            <div class="col-xs-4">
-              <input  class="form-control"
-                      type="text"
-                      name="pay-amount"
-                      id="pay-amount"
-                      placeholder="Rand"
-                  />
-            </div>
-            <div class="col-xs-5">
-              <select class="selectpicker" name="pay-rate" id ="pay-rate">
-                <option value="">please select</option>
-                <option value="day" selected>per day</option>
-                <option value="week">per week</option>
-                <option value="month">per month</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
-          <input
-              id="household-size"
-              class="slider"
-              style="width: 500px;"
-              type="text"
-              name="household-size"
-              data-slider-min="1"
-              data-slider-max="20"
-              data-slider-step="1"
-              value="3"
-              data-slider-value="3"/><br>
-        </div>
-        <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
+    <div class="col-md-10 col-md-offset-1">
+      <hr>
+      <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <button id="go-button" class="btn btn-primary btn-block">Calculate expenses</button><br>
+          <form id="input-form" role="form">
+            <div class="form-group">
+              <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+              <div class="row">
+                <div class="col-xs-4">
+                  <input  class="form-control"
+                          type="text"
+                          name="pay-amount"
+                          id="pay-amount"
+                          placeholder="Rand"
+                      />
+                </div>
+                <div class="col-xs-5">
+                  <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                    <option value="">please select</option>
+                    <option value="day" selected>per day</option>
+                    <option value="week">per week</option>
+                    <option value="month">per month</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
+              <input
+                  id="household-size"
+                  class="slider"
+                  style="width: 500px;"
+                  type="text"
+                  name="household-size"
+                  data-slider-min="1"
+                  data-slider-max="20"
+                  data-slider-step="1"
+                  value="3"
+                  data-slider-value="3"/><br>
+            </div>
+            <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
+            <div class="col-sm-8 col-sm-offset-2">
+              <button id="go-button" class="btn btn-primary btn-block">Calculate expenses</button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+
+      <hr>
     </div>
   </div>
-
-  <hr>
 </div>
 
-<div id="output-container" style="display: none;">
+<div id="result-container" class="container" style="display: none;">
+  <div class="row">
+    <h2>You pay an equivalent of <span id="output-amount" class="label">R0</span> per month.</h2>
+
+    <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+
+    <h2>
+      You are paying <span id="output-percentage" class="label">0%</span> of the household's minimal need of <span id="output-monthly-need">R0</span>.
+    </h2>
+    <p class="lead"><span id="output-statement"></span></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <button id="show-assumptions-btn" class="btn btn-primary btn-block">Show assumptions</button>
+    </div>
+  </div>
+</div>
+
+<div id="assumption-container" class="container" style="display: none;">
 <div class="row">
-
-<h2>You pay an equivalent of <span id="output-amount" class="label">R0</span> per month.</h2>
-
-<p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
-
-<h2>
-  You are paying <span id="output-percentage" class="label">0%</span> of the household's minimal need of <span id="output-monthly-need">R0</span>.
-</h2>
-<p class="lead"><span id="output-statement"></span></p>
-
 
 <div class="panel-group" id="accordion">
 
@@ -371,6 +379,9 @@
   </div>
 </div>
 <!-- Other Panel end-->
+</div>
+</div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -431,6 +442,11 @@
     $("#go-button").on('click', function(e){
       e.preventDefault();
       update_output();
+    })
+
+    $("#show-assumptions-btn").on('click', function(){
+      $(this).hide('slow');
+      $('#assumption-container').show('slow');
     })
 
     slider_arr = [

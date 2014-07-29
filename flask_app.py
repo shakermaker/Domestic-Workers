@@ -1,17 +1,5 @@
 from flask import Flask, request, render_template
 app = Flask(__name__)
-import csv
-
-def read_data(filename):
-    """
-    Read specified csv file, and return it as a list of dicts.
-    """
-
-    with open(filename, 'r') as f:
-        return list(csv.DictReader(f))
-
-dataset=read_data('Book1.csv')
-
 
 @app.route('/')
 def home():

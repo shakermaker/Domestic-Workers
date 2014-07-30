@@ -28,9 +28,9 @@ function calculate_rent(household_size){
 
   //Need comments on sanitation and violence to update with rent options.
   if (rent_cost > 0 && rent_cost < 500)
-    sanitation_comment = "Low functionality of bathrooms. High likelihood of communal bathrooms. Low likelihood of frequent trash collection."
+    sanitation_comment = "Low functionality of bathrooms. High likelihood of communal bathroom. Low likelihood of reliable trash collection."
   else
-    sanitation_comment = "Personal bathroom facilities. Frequent trash collection"
+    sanitation_comment = "Personal bathroom facilities. Reliable trash collection"
   if (rent_cost > 0 && rent_cost < 900)
     violence_comment = "High likelihood of experiencing gang violence and burglaries."
   else
@@ -45,11 +45,11 @@ function calculate_education(household_size){
   var education_cost = $("#education-cost").val()
   if (household_size>2){
     kids = household_size-2;
-    out = 300 * (kids);
+    out = 200 * (kids);
   }
   else{
-    kids=household_size-1;
-    out = 300 * (kids);
+    kids = household_size-1;
+    out = 200 * (kids);
   }
   var out = education_cost * kids
   console.log("educ", out);
@@ -62,6 +62,8 @@ function calculate_education(household_size){
 function calculate_health(household_size){
   var health_cost=$("#health-cost").val();
   var out = health_cost * household_size;
+  var health_comment = ""
+
   console.log("health", out);
   $("#health-total").html("R" + out);
   return out

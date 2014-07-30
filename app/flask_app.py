@@ -15,7 +15,3 @@ def home():
         input3 = 1
 
     return render_template('index.html', input_variable=input, input2_variable=input2, input3_variable=input3)
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run()

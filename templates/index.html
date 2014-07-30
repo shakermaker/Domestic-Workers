@@ -21,90 +21,95 @@
   <![endif]-->
 </head>
 <body>
-<div class="container text-center">
 
-  <div class="jumbotron">
-    <h1>The Minimal Need</h1>
-    <p class="lead">Understanding the cost of a minimal standard of living in South Africa</p>
-    <!-- Button trigger modal -->
-    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><small>Open Description</small></button>
-  </div>
+<div id="input-container" class="container">
 
-</div>
-<div class="container">
-<div class="row">
-<div class="col-md-10 col-md-offset-1">
-
-<div id="input-container">
-  <!-- p class="lead">
-    We often pay our domestic workers what 'feels right'. This tool will help you make an informed decision on what a fair wage for domestic workers is.
-  </p-->
-  
-  <hr>
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <form id="input-form" role="form">
-        <div class="form-group">
-          <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
-          <div class="row">
-            <div class="col-xs-4">
-              <input  class="form-control"
-                      type="text"
-                      name="pay-amount"
-                      id="pay-amount"
-                      placeholder="Rand"
-                  />
-            </div>
-            <div class="col-xs-5">
-              <select class="selectpicker" name="pay-rate" id ="pay-rate">
-                <option value="">please select</option>
-                <option value="day" selected>per day</option>
-                <option value="week">per week</option>
-                <option value="month">per month</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
-          <input
-              id="household-size"
-              class="slider"
-              style="width: 500px;"
-              type="text"
-              name="household-size"
-              data-slider-min="1"
-              data-slider-max="20"
-              data-slider-step="1"
-              value="3"
-              data-slider-value="3"/><br>
-        </div>
-        <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
-        <div class="col-sm-8 col-sm-offset-2">
-          <button id="go-button" class="btn btn-primary btn-block">Calculate expenses</button><br>
-        </div>
-      </form>
+  <div class="row text-center">
+    <div class="jumbotron">
+      <h1>The Minimal Need</h1>
+      <p class="lead">Understanding the cost of a minimal standard of living in South Africa</p>
     </div>
   </div>
 
-  <hr>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <hr>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <form id="input-form" role="form">
+            <div class="form-group">
+              <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+              <div class="row">
+                <div class="col-xs-4">
+                  <input  class="form-control"
+                          type="text"
+                          name="pay-amount"
+                          id="pay-amount"
+                          placeholder="Rand"
+                      />
+                </div>
+                <div class="col-xs-5">
+                  <select class="selectpicker" name="pay-rate" id ="pay-rate">
+                    <option value="">please select</option>
+                    <option value="day" selected>per day</option>
+                    <option value="week">per week</option>
+                    <option value="month">per month</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="household-size" class="lead">Including your household worker, how large is their household?</label><br>
+              <input
+                  id="household-size"
+                  class="slider"
+                  style="width: 500px;"
+                  type="text"
+                  name="household-size"
+                  data-slider-min="1"
+                  data-slider-max="20"
+                  data-slider-step="1"
+                  value="3"
+                  data-slider-value="3"/><br>
+            </div>
+            <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
+            <div class="col-sm-8 col-sm-offset-2">
+              <button id="go-button" class="btn btn-primary btn-block btn-lg">Calculate expenses</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr>
+    </div>
+  </div>
 </div>
 
-<div id="output-container" style="display: none;">
+<div id="result-container" class="container" style="display: none;">
+  <div class="page-header">
+    <h1>The Minimal Need <small>Understanding the cost of living in South Africa</small></h1>
+  </div>
+
+  <div class="row">
+    <h2>You pay an equivalent of <span id="output-amount" class="label">R0</span> per month.</h2>
+
+    <p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
+
+    <h2>
+      You are paying <span id="output-percentage" class="label">0%</span> of the household's minimal need of <span id="output-monthly-need">R0</span>.
+    </h2>
+    <p class="lead"><span id="output-statement"></span></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <button id="show-assumptions-btn" class="btn btn-primary btn-block btn-lg">Show assumptions</button>
+    </div>
+  </div>
+</div>
+
+<div id="assumption-container" class="container" style="display: none;">
 <div class="row">
-
-<h2>You pay an equivalent of <span id="output-amount" class="label">R0</span> per month.</h2>
-
-<p class="text-muted">*We assume full time employment at five days a week and a little over four weeks a month.</p>
-
-<h2>
-  You are paying <span id="output-percentage" class="label">0%</span> of the household's minimal need of <span id="output-monthly-need">R0</span>.
-</h2>
-<p class="lead"><span id="output-statement"></span></p>
-
-
-
 
 <div class="panel-group" id="accordion">
 
@@ -190,9 +195,9 @@
   <div id="panel-rent-expenses" class="panel-collapse collapse">
     <div class="panel-body">
       <label for="rent-cost" class="lead">Housing Cost</label><br>
-      <div class="form-group"> 
-      <label for="rent-cost" class="lead">The cost of rent, utilities, and household maintenance.</label><br>
-        <p>Generally speaking, higher rents are associated with better provision of sanitation services and lower crime rates in informal settlements</p>       
+      <div class="form-group">
+        <label for="rent-cost" class="lead">The cost of rent, utilities, and household maintenance.</label><br>
+        <p>Generally speaking, higher rents are associated with better provision of sanitation services and lower crime rates in informal settlements</p>
         <input
             id="rent-cost"
             class="slider"
@@ -235,20 +240,6 @@
             data-slider-step="10"
             value="160"
             data-slider-value="160"/><br>
-        <!-- label for="health-householdsize" class="lead">For how many individuals in the household?</label><br>
-        <input
-
-            id="health-householdsize"
-            class="slider"
-            style="width: 500px;"
-            type="text"
-            name="health-householdsize"
-            data-slider-min="1"
-            data-slider-max="20"
-            data-slider-step="1"
-            value="4"
-            data-slider-value="4"/><br>
-        <!-- Adjust slider to reflect household size-->
       </div>
     </div>
   </div>
@@ -390,12 +381,14 @@
   </div>
 </div>
 <!-- Other Panel end-->
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
-</div>
-</div>
+<div id="footer">
+  <div class="col-lg-12 text-center">
+    <p id="attribution"><a data-toggle="modal" data-target="#myModal">Read more</a> about this tool. Brought to you by <a href="http://www.code4sa.org" target="_blank">Code4SA</a>.</p>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -429,347 +422,77 @@
 <script src="static\bootstrap\js\bootstrap.min.js"></script>
 <script src="static\bootstrap\js\bootstrap-select.min.js"></script>
 <script src="static\slider\js\bootstrap-slider.js"></script>
+<script src="static\main.js"></script>
 
 
 <script>
 
-$(function() {
-  $("#myModal").modal("show");
-});
+  $(document).ready(function(){
 
-function calculate_transport(household_size){
-  var trans_cost = $("#transport-cost").val();
-  var trans_direction = $("#transport-direction").val();
-  if (trans_direction=="oneway")
-    var out = Math.round(trans_cost * 2 * 5 * 4.33);
-  else
-    var out = Math.round(trans_cost * 5 * 4.33);
+    $("#pay-amount").focus();
 
-  $("#transport-total").html("R" + out);
+    // initialize sliders
+    $('#household-size').slider({
+      formater: function(value) {
+        if (value==1)
+          return '1 person';
+        else
+          return value + ' people';
+      }
+    });
 
-  console.log("transport", out);
+    // initialize dropdown selects
+    $('.selectpicker').selectpicker().on("change",function(){
+      update_output();
+    });
 
-  return out
-}
+    // update on click
+    $("#go-button").on('click', function(e){
+      e.preventDefault();
+      update_output();
+    })
 
-function calculate_food(household_size){
-  var food_cost=$("#food-cost").val();
-  var out = Math.round(food_cost * household_size * 30);
+    $("#show-assumptions-btn").on('click', function(){
+      $(this).hide('slow');
+      $('#assumption-container').show('slow');
+    })
 
-  // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week IF education is provided. 16/21*850 for kids
-  // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
+    slider_arr = [
+      [$('#transport-cost'), 'rand'],
+      [$('#food-cost'), 'rand'],
+      [$('#rent-cost'), 'rand'],
+      [$('#education-cost'), 'rand'],
+      [$('#education-kids'), 'child'],
+      [$('#health-cost'), 'rand'],
+      [$('#communication-cost'), 'rand'],
+      [$('#recreation-cost'), 'rand'],
+      [$('#other-cost'), 'rand'],
+    ]
 
-  console.log("food", out);
-
-  $("#food-total").html("R" + out);
-
-  return out
-}
-
-function calculate_rent(household_size){
-  var rent_cost = $("#rent-cost").val();
-  var sanitation_comment=""
-  var violence_comment=""
-  var out = Math.round(rent_cost)
-
-  //Need comments on sanitation and violence to update with rent options.
-
-  if (rent_cost > 0 && rent_cost < 500)
-    sanitation_comment = "Low functionality of bathrooms. High likelihood of communal bathrooms. Low likelihood of frequent trash collection."
-  else
-    sanitation_comment = "Personal bathroom facilities. Frequent trash collection"
-
-  if (rent_cost > 0 && rent_cost < 900)
-    violence_comment = "High likelihood of experiencing gang violence and burglaries."
-  else
-    violence_comment = "Much lower likelihood of experiencing violence."
-
-  console.log("rent", out);
-
-  $("#rent-total").html("R" + out);
-
-  return out
-}
-
-function calculate_education(household_size){
-  //The variable 'kids' is an assumption and can be changed later by the user. How should we do this?
-  //var kids = $("#education-kids").val()
-  var kids = 0
-  var education_cost = $("#education-cost").val()
-
-  if (household_size>2){
-    kids = household_size-2;
-    out = 300 * (kids);
-  }
-  else{
-    kids=household_size-1;
-    out = 300 * (kids);
-  }
-
-  var out = education_cost * kids
-  console.log("educ", out);
-  console.log("kids", kids);
-  console.log("household size", household_size);
-  
-  $("#education-total").html("R" + out);
-
-  return out
-}
-
-function calculate_health(household_size){
-  var health_cost=$("#health-cost").val();
-  var out = health_cost * household_size;
-  console.log("health", out);
-
-//Adjust slider to reflect household size
-  $("#health-total").html("R" + out);
-
-  return out
-}
-
-function calculate_communication(household_size){
-  var communication_cost = $("#communication-cost").val();
-  var out = communication_cost * household_size
-  console.log("communication", out);
-
-  $("#communication-total").html("R" + out);
-
-  return out
-}
-
-function calculate_recreation(household_size){
-  var recreation_cost = $("#recreation-cost").val();
-  var out = recreation_cost * household_size;
-  console.log("recreation", out);
-
-  $("#recreation-total").html("R" + out);
-
-  return out
-}
-
-function calculate_other(household_size){
-  var out = $("#other-cost").val() * household_size;
-  console.log("other", out);
-
-  $("#other-total").html("R" + out);
-
-  return out
-}
-
-function calculate_expenditure(household_size) {
-  var total = 0;
-
-  total += calculate_rent(household_size);
-  total += calculate_food(household_size);
-  total += calculate_transport(household_size);
-  total += calculate_education(household_size);
-  total += calculate_health(household_size);
-  total += calculate_communication(household_size);
-  total += calculate_recreation(household_size);
-  total += calculate_other(household_size);
-
-  console.log("total", total);
-  return Math.round(total)
-}
-
-
-function update_output(){
-
-  // read input
-  var household_size = $("#household-size").val();
-  var pay_rate = $("#pay-rate").val();
-  var pay_amount = $("#pay-amount").val();
-
-  if (household_size && pay_rate && pay_amount)
-  {
-    var monthly_expenditure = calculate_expenditure(household_size);
-//    console.log("Monthly expenditure", monthly_expenditure);
-    // calculate monthly pay
-    var monthly_pay = 0;
-    // Assumption using DoL info - a month includes 4.33 weeks and a week is for 5 work days.
-    if (pay_rate=="day")
-      monthly_pay = pay_amount*5*4.33;
-    else if (pay_rate=="week")
-      monthly_pay = pay_amount*4.33;
-    else if (pay_rate=="month")
-      monthly_pay = pay_amount;
-
-    var output_percentage = (monthly_pay/monthly_expenditure);
-    output_percentage *= 100;
-    output_percentage = Math.round(output_percentage);
-
-    var output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
-    if ((output_percentage>0) && (output_percentage<= 75))
-      output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
-    else if ((output_percentage>75) && (output_percentage<= 90))
-      output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
-    else if ((output_percentage>90) && (output_percentage<= 100))
-      output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
-    else if (output_percentage == 0)
-      output_statement = "Perhaps you forgot to enter how much you're paying. Please try again!";
-
-    // show results to the user
-    $("#output-amount").html("R" + monthly_pay)
-    $("#output-monthly-need").html("R" + monthly_expenditure)
-    if(output_percentage>=100)
-    {
-      $("#output-amount").removeClass('label-danger');
-      $("#output-amount").removeClass('label-warning');
-      $("#output-amount").addClass('label-success');
-      $("#output-percentage").removeClass('label-danger');
-      $("#output-percentage").removeClass('label-warning');
-      $("#output-percentage").addClass('label-success');
-    }
-    else if(output_percentage>75 && output_percentage<100)
-    {
-      $("#output-amount").removeClass('label-danger');
-      $("#output-amount").addClass('label-warning');
-      $("#output-amount").removeClass('label-success');
-      $("#output-percentage").removeClass('label-danger');
-      $("#output-percentage").addClass('label-warning');
-      $("#output-percentage").removeClass('label-success');
-    }
-    else(output_percentage<=75)
-    {
-      $("#output-amount").addClass('label-danger');
-      $("#output-amount").removeClass('label-warning');
-      $("#output-amount").removeClass('label-success');
-      $("#output-percentage").addClass('label-danger');
-      $("#output-percentage").removeClass('label-warning');
-      $("#output-percentage").removeClass('label-success');
-    }
-
-    $("#output-percentage").html(output_percentage + "%")
-    $("#output-statement").html(output_statement);
-
-    $("#input-container").hide();
-    $("#output-container").show(600);
-  }
-}
-
-$(document).ready(function(){
-
-  $("#pay-amount").focus();
-
-//  // show/hide panels on click
-//  $(".panel-heading").on('click', function(){
-//    $(this).next(".collapse").toggle();
-//  })
-
-  // initialize sliders
-  $('#household-size').slider({
-    formater: function(value) {
-      if (value==1)
-        return '1 person';
-      else
-        return value + ' people';
-    }
-  });
-
-  // initialize dropdown selects
-  $('.selectpicker').selectpicker().on("change",function(){
-    update_output();
-  });
-
-  // update on click
-  $("#go-button").on('click', function(e){
-    e.preventDefault();
-    update_output();
-  })
-
-  //Transportation Slider
-  $('#transport-cost').slider({
-    formater: function(value) {
+    function rand_formater(value) {
       return value + ' rand';
     }
-  }).on('slideStop', function(event){
-    update_output()
-  });
 
-  //Food Slider
-  $('#food-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
-    }
-  }).on('slideStop', function(event){
-    update_output()
-  });
-
-  //Health Slider
-  $('#health-householdsize').slider({
-    formater: function(value) {
-      return value + ' members';
-    }
-  }).on('slideStop', function(event){
-    update_output()
-  });
-
-  //Housing Slider
-  $('#rent-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
-    }
-  }).on('slideStop', function(event){
-    update_output()
-  });
-
-  //Education Slider
-  $('#education-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
-    }
-  }).on('slideStop', function(event){
-    update_output()
-  });
-
-  $('#education-kids').slider({
-    formater: function(value) {
-      if (value==1)
+    function child_formater(value) {
+      if(value==1)
         return '1 child';
       else
         return value + ' children';
     }
-  }).on('slideStop', function(event){
-    update_output()
-  });
 
-//Healthcare Slider
-$('#health-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
+    for (var i=0; i<slider_arr.length; i++){
+      var tmp_slider = slider_arr[i][0];
+      var tmp_formater = rand_formater;
+      if (slider_arr[i][1] == "child")
+        tmp_formater = child_formater;
+      tmp_slider.slider({
+        formater: tmp_formater
+      }).on('slideStop', function(event){
+        update_output()
+      });
     }
-  }).on('slideStop', function(event){
-    update_output()
-  });
 
-  //Communication Slider
-  $('#communication-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
-    }
-  }).on('slideStop', function(event){
-    update_output()
   });
-
-  //Recreation Slider
-  $('#recreation-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
-    }
-  }).on('slideStop', function(event){
-    update_output()
-  });
-
-  //Other Slider
-  $('#other-cost').slider({
-    formater: function(value) {
-      return value + ' rand';
-    }
-  }).on('slideStop', function(event){
-    update_output()
-  });
-
-});
 </script>
 
 </body>

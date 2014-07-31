@@ -154,7 +154,7 @@ function update_output(){
       $("#output-percentage").removeClass('label-warning');
       $("#output-percentage").addClass('label-success');
     }
-    else if(output_percentage>75 && output_percentage<100)
+    else if(output_percentage>=75)
     {
       $("#output-amount").removeClass('label-danger');
       $("#output-amount").addClass('label-warning');
@@ -163,7 +163,7 @@ function update_output(){
       $("#output-percentage").addClass('label-warning');
       $("#output-percentage").removeClass('label-success');
     }
-    else(output_percentage<=75)
+    else
     {
       $("#output-amount").addClass('label-danger');
       $("#output-amount").removeClass('label-warning');

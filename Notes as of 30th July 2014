@@ -11,6 +11,6 @@ Notes on the application:
 4. Housing costs and output statements - the output statement should be visible in the accordion. These are the violence and sanitation comments.
 5. Healthcare costs - checkbox instead of slider? No health coverage, monthly consultancy fee, and health insurance. Health cost would then be this value multiplied by household size.
 6. Education costs - adjustable number of kids as it is.
+7. Input value should be visible and adjustable. 
 
-
-7. Output in terms of sharing needs to be finalized
+8. Output in terms of sharing needs to be finalized

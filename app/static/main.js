@@ -64,6 +64,8 @@ function calculate_health(household_size){
   var out = health_cost * household_size;
   var health_comment = ""
 
+  
+
   console.log("health", out);
   $("#health-total").html("R" + out);
   return out

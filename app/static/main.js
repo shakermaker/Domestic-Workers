@@ -111,6 +111,45 @@ function calculate_expenditure(household_size) {
 }
 
 
+function highlight_output(class_name){
+    var available_classes = ['label-danger', 'label-warning', 'label-success']
+    if ($.inArray(class_name, available_classes) > -1){
+        for (var i=0; i<available_classes.length; i++)
+        {
+            var tmp = available_classes[i];
+            $("#output-amount").removeClass(tmp);
+            $("#output-percentage").removeClass(tmp);
+        }
+        $("#output-amount").addClass(class_name);
+        $("#output-percentage").addClass(class_name);
+    }
+}
+
+
+function update_display(class_name){
+
+    var transition_time = 400;
+    var available_classes = ['display-landing', 'display-results', 'display-assumptions']
+    if ($.inArray(class_name, available_classes) > -1){
+        for (var i=0; i<available_classes.length; i++)
+        {
+            var tmp = available_classes[i];
+            // hide some stuff
+            if(tmp != class_name){
+                $("." + tmp).each(function(){
+                    if(!$(this).hasClass(class_name))
+                        $(this).hide(transition_time);
+                });
+            }
+            // show some stuff
+            $("." + class_name).each(function(){
+                $(this).show(transition_time);
+            })
+        }
+    }
+}
+
+
 function update_output(){
 
   // read input
@@ -137,50 +176,32 @@ function update_output(){
     output_percentage = Math.round(output_percentage);
 
     var output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
-    if ((output_percentage>0) && (output_percentage<= 75))
-      output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
-    else if ((output_percentage>75) && (output_percentage<= 90))
-      output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
-    else if ((output_percentage>90) && (output_percentage<= 100))
-      output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
-    else if (output_percentage == 0)
-      output_statement = "Perhaps you forgot to enter how much you're paying. Please try again!";
+    if ((output_percentage > 0) && (output_percentage < 75))
+    {
+        output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
+        highlight_output('label-danger');
+    }
+    else if ((output_percentage > 75) && (output_percentage < 90))
+    {
+        output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
+        highlight_output('label-warning');
+    }
+    else if ((output_percentage > 90) && (output_percentage < 100))
+    {
+        output_statement = "You're very close to paying a fair wage given the living costs and your employee's household size. Share your results!";
+        highlight_output('label-warning');
+    }
+    else
+    {
+        output_statement = "Well done.";
+        highlight_output('label-success');
+    }
 
     // show results to the user
     $("#output-amount").html("R" + monthly_pay)
     $("#output-monthly-need").html("R" + monthly_expenditure)
-    if(output_percentage>=100)
-    {
-      $("#output-amount").removeClass('label-danger');
-      $("#output-amount").removeClass('label-warning');
-      $("#output-amount").addClass('label-success');
-      $("#output-percentage").removeClass('label-danger');
-      $("#output-percentage").removeClass('label-warning');
-      $("#output-percentage").addClass('label-success');
-    }
-    else if(output_percentage>=75)
-    {
-      $("#output-amount").removeClass('label-danger');
-      $("#output-amount").addClass('label-warning');
-      $("#output-amount").removeClass('label-success');
-      $("#output-percentage").removeClass('label-danger');
-      $("#output-percentage").addClass('label-warning');
-      $("#output-percentage").removeClass('label-success');
-    }
-    else
-    {
-      $("#output-amount").addClass('label-danger');
-      $("#output-amount").removeClass('label-warning');
-      $("#output-amount").removeClass('label-success');
-      $("#output-percentage").addClass('label-danger');
-      $("#output-percentage").removeClass('label-warning');
-      $("#output-percentage").removeClass('label-success');
-    }
 
     $("#output-percentage").html(output_percentage + "%")
     $("#output-statement").html(output_statement);
-
-    $("#input-container").hide();
-    $("#result-container").show(600);
   }
 }

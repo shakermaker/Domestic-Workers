@@ -22,18 +22,25 @@
 </head>
 <body>
 
-<div id="input-container" class="container">
+<div class="container display-results display-assumptions" style="display: none;">
+  <div class="page-header">
+    <h1>The Minimal Need <small>Understanding the cost of living in South Africa</small></h1>
+  </div>
+</div>
 
+<div class="container display-landing">
   <div class="row text-center">
     <div class="jumbotron">
       <h1>The Minimal Need</h1>
       <p class="lead">Understanding the cost of a minimal standard of living in South Africa</p>
     </div>
+    <hr>
   </div>
+</div>
 
+<div class="container display-landing display-results display-assumptions">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <hr>
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <form id="input-form" role="form">
@@ -75,22 +82,18 @@
             </div>
             <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
             <div class="col-sm-8 col-sm-offset-2">
-              <button id="go-button" class="btn btn-primary btn-block btn-lg">Calculate expenses</button>
+              <button id="go-button" class="btn btn-primary btn-block btn-lg display-landing">Calculate expenses</button>
             </div>
           </form>
         </div>
       </div>
 
-      <hr>
+      <hr class="display-landing">
     </div>
   </div>
 </div>
 
-<div id="result-container" class="container" style="display: none;">
-  <div class="page-header">
-    <h1>The Minimal Need <small>Understanding the cost of living in South Africa</small></h1>
-  </div>
-
+<div class="container display-results display-assumptions" style="display: none;">
   <div class="row">
     <h2>You pay an equivalent of <span id="output-amount" class="label">R0</span> per month.</h2>
 
@@ -103,12 +106,12 @@
   </div>
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-      <button id="show-assumptions-btn" class="btn btn-primary btn-block btn-lg">Show assumptions</button>
+      <button id="show-assumptions-btn" class="btn btn-primary btn-block btn-lg display-results">Show assumptions</button>
     </div>
   </div>
 </div>
 
-<div id="assumption-container" class="container" style="display: none;">
+<div class="container display-assumptions" style="display: none;">
 <div class="row">
 
 <div class="panel-group" id="accordion">
@@ -450,11 +453,11 @@
     $("#go-button").on('click', function(e){
       e.preventDefault();
       update_output();
+      update_display('display-results');
     })
 
     $("#show-assumptions-btn").on('click', function(){
-      $(this).hide('slow');
-      $('#assumption-container').show('slow');
+      update_display('display-assumptions');
     })
 
     slider_arr = [
@@ -497,8 +500,8 @@
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-48399585-9', 'auto');

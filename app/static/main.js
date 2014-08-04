@@ -110,7 +110,7 @@ function calculate_expenditure(household_size) {
 
 
 function highlight_output(class_name){
-    available_classes = ['label-danger', 'label-warning', 'label-success']
+    var available_classes = ['label-danger', 'label-warning', 'label-success']
     if ($.inArray(class_name, available_classes) > -1){
         for (var i=0; i<available_classes.length; i++)
         {
@@ -120,6 +120,30 @@ function highlight_output(class_name){
         }
         $("#output-amount").addClass(class_name);
         $("#output-percentage").addClass(class_name);
+    }
+}
+
+
+function update_display(class_name){
+
+    var transition_time = 400;
+    var available_classes = ['display-landing', 'display-results', 'display-assumptions']
+    if ($.inArray(class_name, available_classes) > -1){
+        for (var i=0; i<available_classes.length; i++)
+        {
+            var tmp = available_classes[i];
+            // hide some stuff
+            if(tmp != class_name){
+                $("." + tmp).each(function(){
+                    if(!$(this).hasClass(class_name))
+                        $(this).hide(transition_time);
+                });
+            }
+            // show some stuff
+            $("." + class_name).each(function(){
+                $(this).show(transition_time);
+            })
+        }
     }
 }
 
@@ -177,8 +201,5 @@ function update_output(){
 
     $("#output-percentage").html(output_percentage + "%")
     $("#output-statement").html(output_statement);
-
-    $("#input-container").hide();
-    $("#result-container").show(600);
   }
 }

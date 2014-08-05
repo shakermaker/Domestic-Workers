@@ -45,7 +45,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <form id="input-form" role="form">
             <div class="form-group">
-              <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+              <label class="control-label lead" for="pay-amount">How much do you pay your household worker?</label><br>
               <div class="row">
                 <div class="col-xs-4">
                   <input  class="form-control"
@@ -57,7 +57,6 @@
                 </div>
                 <div class="col-xs-5">
                   <select class="selectpicker" name="pay-rate" id ="pay-rate">
-                    <option value="">please select</option>
                     <option value="day" selected>per day</option>
                     <option value="week">per week</option>
                     <option value="month">per month</option>
@@ -78,7 +77,8 @@
                   data-slider-max="20"
                   data-slider-step="1"
                   value="3"
-                  data-slider-value="3"/><br>
+                  data-slider-value="3"
+                  data-slider-formater="people"/><br>
             </div>
             <p class="text-muted">75% of domestic workers are known to be sole income providers for their households (NIDS 2012).</p><br>
             <div class="col-sm-8 col-sm-offset-2">
@@ -119,7 +119,7 @@
   </div>
 </div>
 
-<div class="container display-assumptions" style="display: none;">
+<div id="assumption-container" class="container display-assumptions" style="display: none;">
 <div class="row">
 
 <div class="panel-group" id="accordion">
@@ -142,6 +142,7 @@
         <input
             id="food-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="food-cost"
@@ -149,7 +150,8 @@
             data-slider-max="100"
             data-slider-step="1"
             value="27"
-            data-slider-value="27"/><br>
+            data-slider-value="27"
+            data-slider-formater="rand"/><br>
       </div>
     </div>
   </div>
@@ -173,6 +175,7 @@
         <input
             id="transport-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="transport-cost"
@@ -180,7 +183,8 @@
             data-slider-max="50"
             data-slider-step="1"
             value="14"
-            data-slider-value="14"/><br>
+            data-slider-value="14"
+            data-slider-formater="rand"/><br>
       </div>
       <div class="col-xs-7">
         <label for="transport-direction" class="lead">Is this cost one way or for a roundtrip?</label><br>
@@ -212,6 +216,7 @@
         <input
             id="rent-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="rent-cost"
@@ -219,7 +224,8 @@
             data-slider-max="1500"
             data-slider-step="100"
             value="500"
-            data-slider-value="500"/><br>
+            data-slider-value="500"
+            data-slider-formater="rand"/><br>
       </div>
     </div>
   </div>
@@ -243,6 +249,7 @@
         <input
             id="health-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="health-cost"
@@ -250,7 +257,8 @@
             data-slider-max="300"
             data-slider-step="10"
             value="40"
-            data-slider-value="40"/><br>
+            data-slider-value="40"
+            data-slider-formater="rand"/><br>
       </div>
     </div>
   </div>
@@ -274,6 +282,7 @@
         <input
             id="education-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="education-cost"
@@ -281,11 +290,13 @@
             data-slider-max="1000"
             data-slider-step="100"
             value="100"
-            data-slider-value="100"/><br>
+            data-slider-value="100"
+            data-slider-formater="rand"/><br>
         <h5>Number of school aged children. We assumed two individuals in the household were out of school.</h5><br>
         <input
             id="education-kids"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="education-kids"
@@ -293,7 +304,8 @@
             data-slider-max="10"
             data-slider-step="1"
             value="2"
-            data-slider-value="2"/><br>
+            data-slider-value="2"
+            data-slider-formater="children"/><br>
       </div>
     </div>
   </div>
@@ -317,6 +329,7 @@
         <input
             id="communication-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="communication-cost"
@@ -324,7 +337,8 @@
             data-slider-max="1000"
             data-slider-step="100"
             value="100"
-            data-slider-value="100"/><br>
+            data-slider-value="100"
+            data-slider-formater="rand"/><br>
       </div>
     </div>
   </div>
@@ -348,6 +362,7 @@
         <input
             id="recreation-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="recreation-cost"
@@ -355,7 +370,8 @@
             data-slider-max="1000"
             data-slider-step="50"
             value="100"
-            data-slider-value="100"/><br>
+            data-slider-value="100"
+            data-slider-formater="rand"/><br>
       </div>
     </div>
   </div>
@@ -379,6 +395,7 @@
         <input
             id="other-cost"
             class="slider"
+            enabled="false"
             style="width: 500px;"
             type="text"
             name="other-cost"
@@ -386,7 +403,8 @@
             data-slider-max="1000"
             data-slider-step="50"
             value="200"
-            data-slider-value="200"/><br>
+            data-slider-value="200"
+            data-slider-formater="rand"/><br>
       </div>
     </div>
   </div>
@@ -444,43 +462,27 @@
 
     $("#pay-amount").focus();
 
-    // initialize sliders
-    $('#household-size').slider({
-      formater: function(value) {
-        if (value==1)
-          return '1 person';
-        else
-          return value + ' people';
-      }
-    });
-
     // initialize dropdown selects
-    $('.selectpicker').selectpicker().on("change",function(){
+    $("#pay-rate").selectpicker();
+    $('#assumption-container .selectpicker').selectpicker().on("change",function(){
       update_output();
     });
 
     // update on click
     $("#go-button").on('click', function(e){
       e.preventDefault();
-      update_output();
-      update_display('display-results');
+      if (update_output())
+      {
+        update_display('display-results');
+        $("#input-form input").on("change", function(){
+          update_output();
+        })
+      }
     })
 
     $("#show-assumptions-btn").on('click', function(){
       update_display('display-assumptions');
     })
-
-    slider_arr = [
-      [$('#transport-cost'), 'rand'],
-      [$('#food-cost'), 'rand'],
-      [$('#rent-cost'), 'rand'],
-      [$('#education-cost'), 'rand'],
-      [$('#education-kids'), 'child'],
-      [$('#health-cost'), 'rand'],
-      [$('#communication-cost'), 'rand'],
-      [$('#recreation-cost'), 'rand'],
-      [$('#other-cost'), 'rand'],
-    ]
 
     function rand_formater(value) {
       return value + ' rand';
@@ -493,18 +495,33 @@
         return value + ' children';
     }
 
-    for (var i=0; i<slider_arr.length; i++){
-      var tmp_slider = slider_arr[i][0];
-      var tmp_formater = rand_formater;
-      if (slider_arr[i][1] == "child")
-        tmp_formater = child_formater;
-      tmp_slider.slider({
-        formater: tmp_formater
-      }).on('slideStop', function(event){
-        update_output()
-      });
+    function people_formater(value) {
+      if (value==1)
+        return '1 person';
+      else
+        return value + ' people';
     }
 
+    $("#accordion .panel").on('shown.bs.collapse', function(){
+      $(this).find("input.slider").each(function(i){
+        $(this).slider('refresh');
+      })
+    });
+
+    $(this).find(".slider").each(function(i){
+      var tmp_formater = rand_formater;
+      if ($(this).attr("data-slider-formater") == "children")
+        tmp_formater = child_formater;
+      else if ($(this).attr("data-slider-formater") == "people")
+        tmp_formater = people_formater;
+      $(this).slider({
+        tooltip: 'always',
+        formater: tmp_formater
+      }).on('slideStop', function(event){
+        $(this).attr("data-slider-val", $(this).val())
+        update_output()
+      });
+    })
   });
 </script>
 

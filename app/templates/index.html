@@ -45,7 +45,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <form id="input-form" role="form">
             <div class="form-group">
-              <label for="pay-amount" class="lead">How much do you pay your household worker?</label><br>
+              <label class="control-label lead" for="pay-amount">How much do you pay your household worker?</label><br>
               <div class="row">
                 <div class="col-xs-4">
                   <input  class="form-control"
@@ -57,7 +57,6 @@
                 </div>
                 <div class="col-xs-5">
                   <select class="selectpicker" name="pay-rate" id ="pay-rate">
-                    <option value="">please select</option>
                     <option value="day" selected>per day</option>
                     <option value="week">per week</option>
                     <option value="month">per month</option>
@@ -120,7 +119,7 @@
   </div>
 </div>
 
-<div class="container display-assumptions" style="display: none;">
+<div id="assumption-container" class="container display-assumptions" style="display: none;">
 <div class="row">
 
 <div class="panel-group" id="accordion">
@@ -464,15 +463,16 @@
     $("#pay-amount").focus();
 
     // initialize dropdown selects
-    $('.selectpicker').selectpicker().on("change",function(){
+    $("#pay-rate").selectpicker();
+    $('#assumption-container .selectpicker').selectpicker().on("change",function(){
       update_output();
     });
 
     // update on click
     $("#go-button").on('click', function(e){
       e.preventDefault();
-      update_output();
-      update_display('display-results');
+      if (update_output())
+        update_display('display-results');
     })
 
     $("#show-assumptions-btn").on('click', function(){

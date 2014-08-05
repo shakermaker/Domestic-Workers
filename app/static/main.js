@@ -15,6 +15,8 @@ function calculate_food(household_size){
   // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week IF education is provided. 16/21*850 for kids
   // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
   var out = Math.round(food_cost * household_size * 30);
+  var kids = $("#education-kids").val()
+
   console.log("food", out);
   $("#food-total").html("R" + out);
   return out
@@ -176,12 +178,12 @@ function update_output(){
     var output_statement = "Try out the fair wage tool and see how your pay reflects living costs in South Africa.";
     if ((output_percentage > 0) && (output_percentage < 75))
     {
-        output_statement = "You're paying too little given the living costs and the size of your household employee. Take time to reassess how much you're paying by using our tool.";
+        output_statement = "You're paying too little given the living costs and the size of your domestic worker. Take time to reassess how much you're paying by using our tool.";
         highlight_output('label-danger');
     }
     else if ((output_percentage > 75) && (output_percentage < 90))
     {
-        output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your household employee.";
+        output_statement = "You're nearly there! Take time to reassess the wage by using our tool or discussing costs with your domestic worker.";
         highlight_output('label-warning');
     }
     else if ((output_percentage > 90) && (output_percentage < 100))
@@ -191,7 +193,7 @@ function update_output(){
     }
     else
     {
-        output_statement = "Well done.";
+        output_statement = "Congratulations! You're covering your domestic worker's Minimal Need. Share your results!";
         highlight_output('label-success');
     }
 

@@ -472,7 +472,12 @@
     $("#go-button").on('click', function(e){
       e.preventDefault();
       if (update_output())
+      {
         update_display('display-results');
+        $("#input-form input").on("change", function(){
+          update_output();
+        })
+      }
     })
 
     $("#show-assumptions-btn").on('click', function(){

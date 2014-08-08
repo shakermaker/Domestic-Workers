@@ -138,7 +138,7 @@
       <div class="form-group">
         <label for="food-cost" class="lead">Providing 2000 calories per person per day.</label><br>
         <p>Using consumer price index data on food (April 2014) and a selected basket of goods we estimate that the daily average cost per person for attaining 2000 calories is R27 (R815 per month per person). </p>
-        <p>This assumption is not set in stone however. Try our <a href="">food price calculator</a> to see what you could spend in a day to attain your minimal calorie intake.</p>
+        <!--p>This assumption is not set in stone however. Try our <a href="">food price calculator</a> to see what you could spend in a day to attain your minimal calorie intake.</p-->
         <input
             id="food-cost"
             class="slider"
@@ -152,6 +152,12 @@
             value="27"
             data-slider-value="27"
             data-slider-formater="rand"/><br>
+
+        <button type="button" class="btn btn-danger" value="15">R15, Carb Heavy Diet</button>
+        <button type="button" class="btn btn-primary" value="27" selected>R27, Balanced Diet</button>
+        <button type="button" class="btn btn-success" value="36">R36, Tim Noakes Diet</button>
+
+
       </div>
     </div>
   </div>
@@ -245,7 +251,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="rent-cost" class="lead">Allocation for monthly healthcare needs</label><br>
-        <p>Healthcare consists of having enough money for public consultancies which cost R39 per visit and for medicines. Healthcare costs can also involve health insurance which can cost at least R299/month.</p>
+        <p>Setting up a health budget for the household is very important. Public consultancies cost R39 per visit and for medicines. Healthcare costs could also be covered through health insurance which can cost at least R299 per month per person.</p>
         <input
             id="health-cost"
             class="slider"

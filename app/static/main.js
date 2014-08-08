@@ -15,7 +15,6 @@ function calculate_food(household_size){
     // Account for nutrition programme. Effectively kids do not need 1 meal 5 days a week IF education is provided. 16/21*850 for kids
     // Suggests that this program covers at least 30% of daily requirements of the students - Department of Education
     var out = Math.round(food_cost * household_size * 30);
-    var kids = $("#education-kids").val()
 
     console.log("food", out);
     $("#food-total").html("R" + out);
@@ -45,15 +44,8 @@ function calculate_rent(household_size){
 function calculate_education(household_size){
     var kids = $("#education-kids").val()
     var education_cost = $("#education-cost").val()
-    if (household_size>2){
-        kids = household_size-2;
-        out = 200 * (kids);
-    }
-    else{
-        kids = household_size-1;
-        out = 200 * (kids);
-    }
-    var out = education_cost * kids
+    var out = education_cost * (kids);
+    
     console.log("educ", out);
     console.log("kids", kids);
     console.log("household size", household_size);
